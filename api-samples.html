@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
@@ -20,6 +23,7 @@
             height: calc(100vh - 120px);
             overflow-y: auto;
         }
+
         .sidebar-link {
             display: flex;
             align-items: center;
@@ -32,14 +36,18 @@
             font-size: 0.9rem;
             margin-bottom: 0.25rem;
         }
-        .sidebar-link:hover, .sidebar-link.active {
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
             background-color: var(--secondary-color);
             color: white;
         }
+
         .sidebar-link i {
             margin-right: 10px;
             font-size: 1.1rem;
         }
+
         .method-badge {
             font-size: 0.75rem;
             padding: 0.25rem 0.6rem;
@@ -47,11 +55,27 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-        .method-get { background-color: #10b981; color: white; }
-        .method-post { background-color: #3b82f6; color: white; }
-        .method-put { background-color: #f59e0b; color: white; }
-        .method-delete { background-color: #ef4444; color: white; }
-        
+
+        .method-get {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .method-post {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .method-put {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .method-delete {
+            background-color: #ef4444;
+            color: white;
+        }
+
         .endpoint-url {
             font-family: var(--mono-font);
             background-color: var(--code-bg);
@@ -63,18 +87,22 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .copy-btn {
             background: transparent;
             border: none;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             transition: color 0.2s;
         }
+
         .copy-btn:hover {
             color: white;
         }
+
         .param-table {
             background: transparent !important;
         }
+
         .param-table th {
             font-weight: 600;
             text-transform: uppercase;
@@ -83,6 +111,7 @@
             color: #64748b;
             border-top: none;
         }
+
         .sdk-tabs .nav-link {
             color: var(--text-color);
             border: none;
@@ -91,11 +120,13 @@
             border-bottom: 2px solid transparent;
             transition: all 0.2s;
         }
+
         .sdk-tabs .nav-link.active {
             color: var(--secondary-color);
             border-bottom-color: var(--secondary-color);
             background: transparent;
         }
+
         .step-indicator {
             width: 32px;
             height: 32px;
@@ -110,11 +141,12 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">APIForge</a>
+            <a class="navbar-brand" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -128,15 +160,20 @@
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3"
+                            href="login.html">Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3"
+                            href="dashboard.html">Dashboard</a></li>
                     <li class="nav-item ms-lg-2">
-                        <button id="rtl-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
+                        <button id="rtl-toggle"
+                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
                             <span class="d-none d-xl-inline">RTL</span>
                         </button>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2" aria-label="Toggle dark mode">
+                        <button id="theme-toggle"
+                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2"
+                            aria-label="Toggle dark mode">
                             <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
                         </button>
                     </li>
@@ -164,7 +201,7 @@
                     <a href="#auth-flow" class="sidebar-link">
                         <i class="bi bi-shield-lock"></i> Authentication Flow
                     </a>
-                    
+
                     <h6 class="text-uppercase fw-bold mt-5 mb-3 small text-muted px-3">Resources</h6>
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-file-earmark-code"></i> OpenAPI Spec
@@ -182,7 +219,8 @@
                     <div class="p-5 rounded-4 bg-primary text-white position-relative overflow-hidden">
                         <div class="position-relative z-1">
                             <h1 class="display-4 fw-bold mb-3">Documentation Samples</h1>
-                            <p class="lead opacity-75 mb-0" style="max-width: 600px;">Explore our collection of high-quality documentation styles and formats designed for developer success.</p>
+                            <p class="lead opacity-75 mb-0" style="max-width: 600px;">Explore our collection of
+                                high-quality documentation styles and formats designed for developer success.</p>
                         </div>
                         <div class="bg-blob blob-1 opacity-25"></div>
                     </div>
@@ -196,7 +234,8 @@
                         </div>
                         <div>
                             <h2 class="fw-bold m-0">REST API Reference</h2>
-                            <p class="text-muted m-0">Detailed endpoint documentation with request/response examples.</p>
+                            <p class="text-muted m-0">Detailed endpoint documentation with request/response examples.
+                            </p>
                         </div>
                     </div>
 
@@ -207,7 +246,9 @@
                                     <span class="method-badge method-get me-3">GET</span>
                                     <h3 class="h5 fw-bold m-0">Retrieve Account Balance</h3>
                                 </div>
-                                <span class="badge bg-success-subtle text-success border border-success-subtle">Production Ready</span>
+                                <span
+                                    class="badge bg-success-subtle text-success border border-success-subtle">Production
+                                    Ready</span>
                             </div>
                         </div>
                         <div class="card-body p-4">
@@ -215,16 +256,22 @@
                                 <span>/v1/account/balance</span>
                                 <button class="copy-btn" title="Copy URL"><i class="bi bi-clipboard"></i></button>
                             </div>
-                            
-                            <p class="text-muted mb-4">Returns the current balance and transaction history for the authenticated user. This endpoint requires a valid API Key with <code>read:account</code> permissions.</p>
-                            
+
+                            <p class="text-muted mb-4">Returns the current balance and transaction history for the
+                                authenticated user. This endpoint requires a valid API Key with
+                                <code>read:account</code> permissions.</p>
+
                             <div class="row g-4">
                                 <div class="col-xl-6">
                                     <h6 class="text-uppercase small fw-bold text-muted mb-3">Query Parameters</h6>
                                     <div class="table-responsive">
                                         <table class="table table-sm param-table">
                                             <thead>
-                                                <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+                                                <tr>
+                                                    <th>Parameter</th>
+                                                    <th>Type</th>
+                                                    <th>Required</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
@@ -232,13 +279,20 @@
                                                     <td><code>string</code></td>
                                                     <td><span class="text-danger">Required</span></td>
                                                 </tr>
-                                                <tr><td colspan="3" class="text-muted smaller border-0 pt-0">The ISO 4217 currency code (e.g. <code>USD</code>, <code>EUR</code>).</td></tr>
+                                                <tr>
+                                                    <td colspan="3" class="text-muted smaller border-0 pt-0">The ISO
+                                                        4217 currency code (e.g. <code>USD</code>, <code>EUR</code>).
+                                                    </td>
+                                                </tr>
                                                 <tr>
                                                     <td><code class="text-primary">limit</code></td>
                                                     <td><code>integer</code></td>
                                                     <td><span class="text-muted">Optional</span></td>
                                                 </tr>
-                                                <tr><td colspan="3" class="text-muted smaller border-0 pt-0">Number of transactions to return (Default: 10, Max: 100).</td></tr>
+                                                <tr>
+                                                    <td colspan="3" class="text-muted smaller border-0 pt-0">Number of
+                                                        transactions to return (Default: 10, Max: 100).</td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -281,20 +335,24 @@
                         <div class="card-header bg-transparent border-0 p-0">
                             <ul class="nav nav-tabs sdk-tabs border-bottom" id="sdkTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="node-tab" data-bs-toggle="tab" data-bs-target="#node-panel" type="button" role="tab">Node.js</button>
+                                    <button class="nav-link active" id="node-tab" data-bs-toggle="tab"
+                                        data-bs-target="#node-panel" type="button" role="tab">Node.js</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="python-tab" data-bs-toggle="tab" data-bs-target="#python-panel" type="button" role="tab">Python</button>
+                                    <button class="nav-link" id="python-tab" data-bs-toggle="tab"
+                                        data-bs-target="#python-panel" type="button" role="tab">Python</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="go-tab" data-bs-toggle="tab" data-bs-target="#go-panel" type="button" role="tab">Go</button>
+                                    <button class="nav-link" id="go-tab" data-bs-toggle="tab" data-bs-target="#go-panel"
+                                        type="button" role="tab">Go</button>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content" id="sdkTabContent">
                             <div class="tab-pane fade show active" id="node-panel" role="tabpanel">
                                 <div class="p-0 position-relative">
-                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i
+                                            class="bi bi-clipboard"></i></button>
                                     <pre class="m-0 rounded-0"><code class="language-javascript">const forge = require('apiforge-node')('your_api_key');
 
 async function getBalance() {
@@ -311,7 +369,8 @@ async function getBalance() {
                             </div>
                             <div class="tab-pane fade" id="python-panel" role="tabpanel">
                                 <div class="p-0 position-relative">
-                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i
+                                            class="bi bi-clipboard"></i></button>
                                     <pre class="m-0 rounded-0"><code class="language-python">from apiforge import Client
 
 client = Client(api_key="your_api_key")
@@ -326,7 +385,8 @@ def get_balance():
                             </div>
                             <div class="tab-pane fade" id="go-panel" role="tabpanel">
                                 <div class="p-0 position-relative">
-                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i
+                                            class="bi bi-clipboard"></i></button>
                                     <pre class="m-0 rounded-0"><code class="language-go">package main
 
 import (
@@ -367,22 +427,25 @@ func main() {
                         <div class="col-xl-5" data-aos="fade-right">
                             <div class="card border-0 shadow-sm glass-card p-4 h-100">
                                 <h5 class="fw-bold mb-3">payment.succeeded</h5>
-                                <p class="small text-muted mb-4">This event is triggered immediately after a payment transaction is successfully authorized and captured by the banking network.</p>
-                                
+                                <p class="small text-muted mb-4">This event is triggered immediately after a payment
+                                    transaction is successfully authorized and captured by the banking network.</p>
+
                                 <h6 class="text-uppercase small fw-bold text-muted mb-3">Event Metadata</h6>
                                 <ul class="list-unstyled small">
                                     <li class="mb-3 d-flex align-items-start">
                                         <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
                                         <div>
                                             <div class="fw-bold">Retry Logic</div>
-                                            <span class="text-muted">Retries up to 5 times with exponential backoff.</span>
+                                            <span class="text-muted">Retries up to 5 times with exponential
+                                                backoff.</span>
                                         </div>
                                     </li>
                                     <li class="mb-3 d-flex align-items-start">
                                         <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
                                         <div>
                                             <div class="fw-bold">Signature Verification</div>
-                                            <span class="text-muted">Includes <code>X-Forge-Signature</code> for security.</span>
+                                            <span class="text-muted">Includes <code>X-Forge-Signature</code> for
+                                                security.</span>
                                         </div>
                                     </li>
                                 </ul>
@@ -431,7 +494,8 @@ func main() {
                             <div class="card border-0 shadow-sm glass-card p-4 h-100">
                                 <div class="step-indicator">1</div>
                                 <h5 class="fw-bold">Generate API Key</h5>
-                                <p class="text-muted small">Go to your Dashboard settings and generate a Secret Key. Never share this key or expose it in client-side code.</p>
+                                <p class="text-muted small">Go to your Dashboard settings and generate a Secret Key.
+                                    Never share this key or expose it in client-side code.</p>
                                 <div class="bg-dark p-3 rounded mt-auto">
                                     <code class="text-success smaller">Authorization: Bearer sk_live_••••••••••••</code>
                                 </div>
@@ -441,7 +505,8 @@ func main() {
                             <div class="card border-0 shadow-sm glass-card p-4 h-100">
                                 <div class="step-indicator">2</div>
                                 <h5 class="fw-bold">OAuth 2.0 Integration</h5>
-                                <p class="text-muted small">For multi-tenant applications, use our OAuth flow to securely request access to your customers' data.</p>
+                                <p class="text-muted small">For multi-tenant applications, use our OAuth flow to
+                                    securely request access to your customers' data.</p>
                                 <a href="#" class="btn btn-outline-primary btn-sm mt-auto w-fit">View OAuth Docs</a>
                             </div>
                         </div>
@@ -456,7 +521,7 @@ func main() {
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3">
-                    <a class="navbar-brand d-block mb-3" href="index.html">APIForge</a>
+                    <a class="navbar-brand d-block mb-3" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
                     <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
                 </div>
                 <div class="col-6 col-lg-2">
@@ -476,7 +541,8 @@ func main() {
                 <div class="col-lg-5">
                     <div class="newsletter-box glass-card">
                         <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
-                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in
+                            your inbox.</p>
                         <form>
                             <div class="input-group">
                                 <input type="email" class="form-control" placeholder="your@email.com">
@@ -504,10 +570,10 @@ func main() {
     <script>
         // Copy to clipboard functionality
         document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const parent = this.closest('.endpoint-url, .terminal-window, .position-relative');
                 const code = parent.querySelector('code, span:first-child').innerText;
-                
+
                 navigator.clipboard.writeText(code).then(() => {
                     const icon = this.querySelector('i');
                     icon.classList.replace('bi-clipboard', 'bi-check2');
@@ -538,4 +604,5 @@ func main() {
         });
     </script>
 </body>
+
 </html>
