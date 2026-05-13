@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | APIForge</title>
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-xl sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">APIForge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item ms-lg-2"><button id="rtl-toggle" class="btn btn-sm btn-outline-secondary">RTL</button></li>
+                    <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm border"><i class="bi bi-moon-stars-fill"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="section-padding bg-light-subtle position-relative overflow-hidden">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="container text-center" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-3">Transparent Pricing</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">Documentation plans designed to scale with your API growth.</p>
+        </div>
+    </header>
+
+    <!-- Section 1: Pricing Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 border-0 shadow-sm p-4 glass-card">
+                        <div class="mb-3"><span class="badge bg-primary-subtle text-primary text-uppercase">Startup</span></div>
+                        <h3 class="h4 fw-bold">Starter Kit</h3>
+                        <p class="text-muted small">Perfect for small APIs and initial documentation needs.</p>
+                        <div class="my-4">
+                            <span class="display-5 fw-bold">$999</span>
+                            <span class="text-muted">/project</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 small">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Up to 10 Endpoints</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> OpenAPI 3.0 Spec</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Basic Auth Guides</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> 1 Round of Revisions</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline-primary w-100 mt-auto">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100 border-primary shadow p-4 position-relative glass-card">
+                        <div class="position-absolute top-0 end-0 m-3"><span class="badge bg-primary text-uppercase">Most Popular</span></div>
+                        <div class="mb-3"><span class="badge bg-primary-subtle text-primary text-uppercase">Professional</span></div>
+                        <h3 class="h4 fw-bold">Full Suite</h3>
+                        <p class="text-muted small">Complete documentation and SDK guides for growing platforms.</p>
+                        <div class="my-4">
+                            <span class="display-5 fw-bold">$2,499</span>
+                            <span class="text-muted">/project</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 small">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Up to 30 Endpoints</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> OpenAPI + SDK Guides</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Interactive Examples</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Advanced Auth Flows</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Postman Collection</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary w-100 mt-auto">Get Started</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100 border-0 shadow-sm p-4 glass-card">
+                        <div class="mb-3"><span class="badge bg-primary-subtle text-primary text-uppercase">Enterprise</span></div>
+                        <h3 class="h4 fw-bold">Enterprise</h3>
+                        <p class="text-muted small">Custom documentation systems for large-scale engineering teams.</p>
+                        <div class="my-4">
+                            <span class="display-5 fw-bold">Custom</span>
+                        </div>
+                        <ul class="list-unstyled mb-5 small">
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Unlimited Endpoints</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Custom Developer Portal</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Multi-language SDKs</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Dedicated Support</li>
+                            <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Versioning Strategy</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline-primary w-100 mt-auto">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Comparison Table -->
+    <section class="section-padding bg-light-subtle">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Plan Comparison</h2>
+            <div class="table-responsive" data-aos="fade-up">
+                <table class="table table-bordered bg-white text-center align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-start">Features</th>
+                            <th>Starter</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-start small fw-bold">OpenAPI 3.1 Spec</td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-start small fw-bold">Interactive API Playground</td>
+                            <td><i class="bi bi-dash"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-start small fw-bold">Custom SDK Guides</td>
+                            <td><i class="bi bi-dash"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="text-start small fw-bold">Portal Setup</td>
+                            <td><i class="bi bi-dash"></i></td>
+                            <td><i class="bi bi-dash"></i></td>
+                            <td><i class="bi bi-check-circle-fill text-primary"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: FAQ -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="accordion accordion-flush" id="faqAccordion">
+                        <div class="accordion-item border rounded mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How long does a typical project take?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted small">
+                                    A Starter Kit project usually takes 2 weeks, while the Full Suite can take 4-6 weeks depending on the number of endpoints and complexity.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold small" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Do you provide maintenance services?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted small">
+                                    Yes, we offer monthly maintenance plans to keep your documentation in sync with your API updates and new feature releases.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-padding border-top">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <a class="navbar-brand d-block mb-3" href="index.html">APIForge</a>
+                    <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="api-samples.html" class="text-muted text-decoration-none">Samples</a></li>
+                        <li><a href="pricing.html" class="text-muted text-decoration-none">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="newsletter-box glass-card">
+                        <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <form>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="your@email.com">
+                                <button class="btn btn-primary px-4" type="button">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-top text-center text-muted smaller">
+                <p class="mb-0">&copy; 2026 APIForge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

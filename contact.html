@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | APIForge</title>
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-xl sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">APIForge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item ms-lg-2"><button id="rtl-toggle" class="btn btn-sm btn-outline-secondary">RTL</button></li>
+                    <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm border"><i class="bi bi-moon-stars-fill"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Contact Form -->
+    <section class="section-padding position-relative overflow-hidden">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5" data-aos="fade-up">
+                        <h1 class="display-5 fw-bold">Let's build something <span class="text-primary">technical</span></h1>
+                        <p class="lead text-muted">Ready to discuss your API documentation project? Fill out the form below and we'll get back to you with a technical proposal.</p>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm p-4 p-md-5 glass-card" data-aos="fade-up">
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase">Work Email</label>
+                                    <input type="email" class="form-control" placeholder="john@company.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase">Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Acme Inc.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold small text-uppercase">Project Type</label>
+                                    <select class="form-select">
+                                        <option selected>New API Documentation</option>
+                                        <option>OpenAPI Spec Audit</option>
+                                        <option>SDK Documentation</option>
+                                        <option>Developer Portal Setup</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold small text-uppercase">Technical Stack</label>
+                                    <input type="text" class="form-control" placeholder="e.g. Node.js, Python, PostgreSQL, REST, GraphQL">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold small text-uppercase">Project Scope & Details</label>
+                                    <textarea class="form-control" rows="5" placeholder="Tell us about your API, number of endpoints, and specific documentation needs..."></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-5">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">Submit Technical Request</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Contact Info -->
+    <section class="section-padding bg-light-subtle">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                        <i class="bi bi-envelope fs-1 text-primary mb-3 d-block"></i>
+                        <h5 class="fw-bold">Email Us</h5>
+                        <p class="text-muted small">hello@apiforge.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                        <i class="bi bi-geo-alt fs-1 text-primary mb-3 d-block"></i>
+                        <h5 class="fw-bold">Our Studio</h5>
+                        <p class="text-muted small">123 Documentation Ave,<br>Tech City, TC 10101</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                        <i class="bi bi-calendar-check fs-1 text-primary mb-3 d-block"></i>
+                        <h5 class="fw-bold">Book a Call</h5>
+                        <p class="text-muted small">Schedule a 15-min discovery call.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Map -->
+    <section class="section-padding p-0" data-aos="zoom-in">
+        <div class="ratio ratio-21x9 bg-secondary-subtle">
+            <div class="d-flex align-items-center justify-content-center text-muted">
+                <div class="text-center">
+                    <i class="bi bi-map fs-1"></i>
+                    <p class="mt-2 fw-bold">Interactive Map Location</p>
+                    <p class="small">Google Maps API placeholder</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-padding border-top">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <a class="navbar-brand d-block mb-3" href="index.html">APIForge</a>
+                    <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="api-samples.html" class="text-muted text-decoration-none">Samples</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="newsletter-box glass-card">
+                        <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <form>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="your@email.com">
+                                <button class="btn btn-primary px-4" type="button">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-top text-center text-muted smaller">
+                <p class="mb-0">&copy; 2026 APIForge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

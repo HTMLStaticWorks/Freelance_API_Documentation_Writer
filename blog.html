@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | APIForge</title>
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-xl sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">APIForge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item ms-lg-2"><button id="rtl-toggle" class="btn btn-sm btn-outline-secondary">RTL</button></li>
+                    <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm border"><i class="bi bi-moon-stars-fill"></i></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="section-padding bg-light-subtle position-relative overflow-hidden">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
+        <div class="container text-center" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-3">Technical Insights</h1>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">Thoughts on API design, documentation strategy, and developer experience.</p>
+        </div>
+    </header>
+
+    <!-- Section 1: Featured Articles -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="fw-bold mb-5" data-aos="fade-right">Featured Articles</h2>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up">
+                    <article class="card border-0 shadow-sm overflow-hidden glass-card">
+                        <div class="row g-0">
+                            <div class="col-md-6 bg-primary-subtle p-5 d-flex align-items-center justify-content-center">
+                                <i class="bi bi-journal-text display-1 text-primary"></i>
+                            </div>
+                            <div class="col-md-6 p-5">
+                                <span class="badge bg-primary-subtle text-primary mb-3">Guide</span>
+                                <h2 class="fw-bold mb-3">The Ultimate Guide to API Documentation in 2026</h2>
+                                <p class="text-muted">Learn the latest standards, tools, and best practices for creating documentation that developers love.</p>
+                                <a href="#" class="btn btn-primary mt-3">Read Article</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Latest Posts -->
+    <section class="section-padding bg-light-subtle">
+        <div class="container">
+            <h2 class="fw-bold mb-5" data-aos="fade-right">Latest Posts</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <article class="card h-100 border-0 shadow-sm glass-card">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">REST vs GraphQL: Docs Perspective</h5>
+                            <p class="text-muted small">How documentation requirements differ between these two popular API styles.</p>
+                            <div class="mt-4 pt-3 border-top text-muted smaller">May 12, 2026 • 5 min read</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <article class="card h-100 border-0 shadow-sm glass-card">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Writing for Global Developers</h5>
+                            <p class="text-muted small">Best practices for localized and accessible technical documentation.</p>
+                            <div class="mt-4 pt-3 border-top text-muted smaller">May 8, 2026 • 7 min read</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <article class="card h-100 border-0 shadow-sm glass-card">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">SDK Documentation Strategy</h5>
+                            <p class="text-muted small">How to structure language-specific guides for maximum developer adoption.</p>
+                            <div class="mt-4 pt-3 border-top text-muted smaller">May 2, 2026 • 10 min read</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Topics -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="fw-bold mb-5 text-center" data-aos="fade-up">Explore Topics</h2>
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100"><a href="#" class="btn btn-outline-secondary w-100">API Design</a></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200"><a href="#" class="btn btn-outline-secondary w-100">OpenAPI</a></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300"><a href="#" class="btn btn-outline-secondary w-100">SDKs</a></div>
+                <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="400"><a href="#" class="btn btn-outline-secondary w-100">Security</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-padding border-top">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <a class="navbar-brand d-block mb-3" href="index.html">APIForge</a>
+                    <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="api-samples.html" class="text-muted text-decoration-none">Samples</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="newsletter-box glass-card">
+                        <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <form>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="your@email.com">
+                                <button class="btn btn-primary px-4" type="button">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 pt-4 border-top text-center text-muted smaller">
+                <p class="mb-0">&copy; 2026 APIForge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
