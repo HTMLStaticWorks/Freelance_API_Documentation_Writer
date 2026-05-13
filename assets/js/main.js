@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
         rtlToggles.forEach(toggle => {
             const span = toggle.querySelector('span');
             if (span) {
-                span.textContent = dir === 'ltr' ? 'RTL Mode' : 'LTR Mode';
-            } else {
+                span.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
+            } else if (!toggle.querySelector('i')) {
                 toggle.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
             }
         });
@@ -180,4 +180,21 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.classList.add('text-success');
         }
     }
+
+    // Password Visibility Toggle
+    const passwordToggles = document.querySelectorAll('.password-toggle');
+    passwordToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const container = this.closest('.password-field-container');
+            const input = container.querySelector('input');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.classList.replace('bi-eye', 'bi-eye-slash');
+            } else {
+                input.type = 'password';
+                this.classList.replace('bi-eye-slash', 'bi-eye');
+            }
+        });
+    });
 });

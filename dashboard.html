@@ -19,34 +19,55 @@
             color: white;
             height: 100vh;
             position: fixed;
-            right: 0;
+            left: 0;
             top: 0;
-            padding: 1.5rem 1rem;
+            padding: 1.5rem 0;
             z-index: 1000;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease;
         }
+        [dir="rtl"] .dashboard-sidebar {
+            left: auto !important;
+            right: 0 !important;
+            transform: none;
+        }
         .dashboard-main {
-            margin-right: 220px;
+            margin-left: 220px;
             padding: 2rem 3rem;
-            transition: margin-right 0.3s ease;
+            transition: margin-left 0.3s ease;
+        }
+        [dir="rtl"] .dashboard-main {
+            margin-left: 0 !important;
+            margin-right: 220px !important;
         }
         
         @media (max-width: 991.98px) {
             .dashboard-sidebar {
-                transform: translateX(100%);
+                transform: translateX(-100%) !important;
+            }
+            [dir="rtl"] .dashboard-sidebar {
+                transform: translateX(100%) !important;
+                left: auto !important;
+                right: 0 !important;
             }
             .dashboard-sidebar.show {
-                transform: translateX(0);
+                transform: translateX(0) !important;
             }
             .dashboard-main {
-                margin-right: 0;
-                padding: 1.5rem;
+                margin-left: 0 !important;
+                padding: 4.5rem 1.5rem 1.5rem !important;
+            }
+            [dir="rtl"] .dashboard-main {
+                margin-right: 0 !important;
             }
         }
         
-        /* Dashboard Sidebar overrides are in style.css */
+        #dashboard-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 1rem;
+        }
 
         .progress { height: 8px; border-radius: 4px; }
         .stat-card { border-radius: 12px; padding: 1.5rem; }
@@ -71,8 +92,13 @@
         }
         .sidebar-footer {
             margin-top: auto;
-            padding-top: 1.5rem;
+            padding: 1.5rem 1rem 1rem;
             border-top: 1px solid rgba(255,255,255,0.1);
+            background-color: var(--primary-color);
+        }
+        .navbar-brand.px-3 {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
         }
         .admin-profile {
             display: flex;
@@ -121,11 +147,9 @@
             display: block;
         }
         .tracker-card {
-            background: white;
             border-radius: 12px;
             padding: 1.25rem;
             margin-bottom: 1rem;
-            border: 1px solid rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .tracker-card:hover {
@@ -136,8 +160,8 @@
 </head>
 <body class="bg-light-subtle">
     <!-- Mobile Toggle Button -->
-    <button id="sidebar-toggle" class="btn btn-primary d-lg-none position-fixed bottom-0 start-0 m-4 z-3 rounded-circle shadow-lg" style="width: 60px; height: 60px;">
-        <i class="bi bi-list fs-2"></i>
+    <button id="sidebar-toggle" class="btn btn-primary d-lg-none position-fixed top-0 start-0 m-3 z-3 rounded-circle shadow-lg" style="width: 50px; height: 50px;">
+        <i class="bi bi-list fs-3"></i>
     </button>
 
     <!-- Sidebar Overlay -->
@@ -157,7 +181,7 @@
 
         <div class="sidebar-footer">
             <button id="theme-toggle-sidebar" class="toggle-btn mb-2">
-                <i class="bi bi-moon-stars"></i> <span>Dark Mode</span>
+                <i class="bi bi-moon-stars-fill"></i> <span>Dark Mode</span>
             </button>
             <button id="rtl-toggle-sidebar" class="toggle-btn mb-3">
                 <i class="bi bi-translate"></i> <span>RTL Mode</span>
@@ -167,21 +191,21 @@
                 <div class="admin-avatar text-white">JD</div>
                 <div class="admin-name">John Doe</div>
             </div>
-            <a href="login.html" class="sidebar-link text-danger">
+            <a href="login.html" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center py-2 mt-2">
                 <i class="bi bi-box-arrow-right me-2"></i> Sign Out
             </a>
         </div>
     </aside>
 
     <main class="dashboard-main">
-        <header class="d-flex justify-content-between align-items-center mb-5" data-aos="fade-down">
-            <div>
+        <header class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-5 text-center text-lg-start" data-aos="fade-down">
+            <div class="mb-2 mb-lg-0">
                 <h1 class="h3 fw-bold m-0" id="current-page-title">Project: Payment Engine v2</h1>
                 <p class="text-muted small m-0">Last updated 2 hours ago by Alex</p>
             </div>
-            <div class="d-flex gap-3 align-items-center">
-                <button class="btn btn-outline-primary btn-sm"><i class="bi bi-download me-2"></i> Export Docs</button>
-                <button class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-2"></i> New Project</button>
+            <div class="d-flex flex-column flex-sm-row gap-2 gap-md-3 align-items-center w-100 w-lg-auto">
+                <button class="btn btn-outline-primary btn-sm w-100 w-sm-auto"><i class="bi bi-download me-2"></i> Export Docs</button>
+                <button class="btn btn-primary btn-sm w-100 w-sm-auto"><i class="bi bi-plus-lg me-2"></i> New Project</button>
             </div>
         </header>
 

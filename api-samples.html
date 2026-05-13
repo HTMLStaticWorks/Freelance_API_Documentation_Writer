@@ -14,22 +14,99 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        .samples-sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .sidebar-link i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
         .method-badge {
             font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
+            padding: 0.25rem 0.6rem;
             border-radius: 4px;
             font-weight: 700;
             text-transform: uppercase;
         }
         .method-get { background-color: #10b981; color: white; }
         .method-post { background-color: #3b82f6; color: white; }
+        .method-put { background-color: #f59e0b; color: white; }
+        .method-delete { background-color: #ef4444; color: white; }
         
         .endpoint-url {
             font-family: var(--mono-font);
-            background-color: var(--card-bg);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
             border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .copy-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            transition: color 0.2s;
+        }
+        .copy-btn:hover {
+            color: white;
+        }
+        .param-table {
+            background: transparent !important;
+        }
+        .param-table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            border-top: none;
+        }
+        .sdk-tabs .nav-link {
+            color: var(--text-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .sdk-tabs .nav-link.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+            background: transparent;
+        }
+        .step-indicator {
+            width: 32px;
+            height: 32px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -53,171 +130,326 @@
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
                     <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item ms-lg-2"><button id="rtl-toggle" class="btn btn-sm btn-outline-secondary">RTL</button></li>
-                    <li class="nav-item ms-lg-2"><button id="theme-toggle" class="btn btn-sm border"><i class="bi bi-moon-stars-fill"></i></button></li>
+                    <li class="nav-item ms-lg-2">
+                        <button id="rtl-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
+                            <span class="d-none d-xl-inline">RTL</span>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2" aria-label="Toggle dark mode">
+                            <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Section 1: Sample Intro -->
-    <header class="hero-section section-padding bg-light-subtle position-relative overflow-hidden bg-image bg-overlay" style="background-image: url('assets/img/samples_bg.png');">
-        <div class="bg-blob blob-1"></div>
-        <div class="bg-blob blob-2"></div>
-        <div class="container text-center" data-aos="fade-up">
-            <h1 class="display-4 fw-bold mb-3 text-white">Documentation Samples</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 800px;">A collection of documentation styles and formats we provide for our clients. Simple, clear, and developer-focused.</p>
-        </div>
-    </header>
-
-    <!-- Section 2: REST API Documentation -->
-    <section class="section-padding bg-soft-gradient">
-        <div class="container">
-            <div class="row align-items-center mb-4" data-aos="fade-right">
-                <div class="col-auto">
-                    <img src="assets/img/service_openapi.png" alt="REST" style="height: 50px;">
-                </div>
-                <div class="col">
-                    <h2 class="fw-bold m-0">01. REST API Reference</h2>
+    <!-- Main Content with Sidebar -->
+    <div class="container-fluid px-lg-5">
+        <div class="row g-5">
+            <!-- Sidebar -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="samples-sidebar py-5">
+                    <h6 class="text-uppercase fw-bold mb-3 small text-muted px-3">Documentation</h6>
+                    <a href="#rest-api" class="sidebar-link active">
+                        <i class="bi bi-hdd-network"></i> REST API Reference
+                    </a>
+                    <a href="#sdk-samples" class="sidebar-link">
+                        <i class="bi bi-code-slash"></i> SDK Implementation
+                    </a>
+                    <a href="#webhooks" class="sidebar-link">
+                        <i class="bi bi-lightning"></i> Webhook Events
+                    </a>
+                    <a href="#auth-flow" class="sidebar-link">
+                        <i class="bi bi-shield-lock"></i> Authentication Flow
+                    </a>
+                    
+                    <h6 class="text-uppercase fw-bold mt-5 mb-3 small text-muted px-3">Resources</h6>
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-file-earmark-code"></i> OpenAPI Spec
+                    </a>
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-collection"></i> Postman Collection
+                    </a>
                 </div>
             </div>
-            <div class="card border-0 shadow-sm p-4 mb-4 glass-card" data-aos="fade-up">
-                <div class="d-flex align-items-center mb-3">
-                    <span class="method-badge method-get me-3">GET</span>
-                    <h3 class="h5 fw-bold m-0">Retrieve Account Balance</h3>
-                </div>
-                <div class="endpoint-url mb-3">GET /v1/account/balance</div>
-                <p class="text-muted small">Returns the current balance and transaction history for the authenticated user.</p>
-                <div class="row g-4 mt-2">
-                    <div class="col-md-7">
-                        <h6 class="text-uppercase small fw-bold text-muted">Query Parameters</h6>
-                        <table class="table table-sm small">
-                            <thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead>
-                            <tbody>
-                                <tr><td><code>currency</code></td><td>string</td><td>The currency code (e.g. USD).</td></tr>
-                            </tbody>
-                        </table>
+
+            <!-- Content -->
+            <div class="col-lg-9">
+                <!-- Hero Section Inside Content -->
+                <header class="py-5" data-aos="fade-up">
+                    <div class="p-5 rounded-4 bg-primary text-white position-relative overflow-hidden">
+                        <div class="position-relative z-1">
+                            <h1 class="display-4 fw-bold mb-3">Documentation Samples</h1>
+                            <p class="lead opacity-75 mb-0" style="max-width: 600px;">Explore our collection of high-quality documentation styles and formats designed for developer success.</p>
+                        </div>
+                        <div class="bg-blob blob-1 opacity-25"></div>
                     </div>
-                    <div class="col-md-5">
-                        <h6 class="text-uppercase small fw-bold text-muted">Response Body</h6>
-                        <div class="terminal-window">
-                            <pre class="m-0"><code class="language-json">{
-  "balance": 1250.75,
-  "currency": "USD"
-}</code></pre>
+                </header>
+
+                <!-- Section 1: REST API Documentation -->
+                <section id="rest-api" class="pb-5 mb-5 border-bottom">
+                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
+                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                            <i class="bi bi-hdd-network fs-3 text-primary"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold m-0">REST API Reference</h2>
+                            <p class="text-muted m-0">Detailed endpoint documentation with request/response examples.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section 3: SDK Implementation -->
-    <section class="section-padding bg-light-subtle">
-        <div class="container">
-            <div class="row align-items-center mb-4" data-aos="fade-right">
-                <div class="col-auto">
-                    <img src="assets/img/service_sdk.png" alt="SDK" style="height: 50px;">
-                </div>
-                <div class="col">
-                    <h2 class="fw-bold m-0">02. SDK Implementation</h2>
-                </div>
-            </div>
-            <p class="text-muted mb-4" data-aos="fade-right">Clean code examples for various languages to help developers get started in minutes.</p>
-            <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
-                <div class="bg-dark p-2 px-3 d-flex gap-3">
-                    <span class="text-white small fw-bold border-bottom border-primary">Node.js</span>
-                    <span class="text-white-50 small fw-bold">Python</span>
-                    <span class="text-white-50 small fw-bold">Go</span>
-                </div>
-                <div class="p-0">
-                    <pre class="m-0 rounded-0"><code class="language-javascript">const forge = require('apiforge-node')('your_api_key');
-
-async function getBalance() {
-  const balance = await forge.account.getBalance({
-    currency: 'USD'
-  });
-  console.log(balance);
-}</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 4: Webhook Payload -->
-    <section class="section-padding bg-dot-pattern">
-        <div class="container">
-            <div class="row align-items-center mb-4" data-aos="fade-right">
-                <div class="col-auto">
-                    <img src="assets/img/service_openapi.png" alt="Events" style="height: 50px; filter: hue-rotate(45deg);">
-                </div>
-                <div class="col">
-                    <h2 class="fw-bold m-0">03. Webhook Events</h2>
-                </div>
-            </div>
-            <p class="text-muted mb-4" data-aos="fade-right">Structured event payloads for real-time data synchronization.</p>
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <h5 class="fw-bold">payment.succeeded</h5>
-                    <p class="small text-muted">Sent when a payment is successfully processed and confirmed.</p>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Includes transaction ID</li>
-                        <li class="mb-2"><i class="bi bi-check2 text-primary me-2"></i> Customer metadata included</li>
-                        <li><i class="bi bi-check2 text-primary me-2"></i> Timestamp of completion</li>
-                    </ul>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="terminal-window">
-                        <div class="terminal-header"><span class="small text-muted mono-font">Webhook Payload</span></div>
-                        <pre class="m-0"><code class="language-json">{
-  "id": "evt_12345",
-  "type": "payment.succeeded",
+                    <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
+                        <div class="card-header bg-transparent border-0 p-4 pb-0">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="method-badge method-get me-3">GET</span>
+                                    <h3 class="h5 fw-bold m-0">Retrieve Account Balance</h3>
+                                </div>
+                                <span class="badge bg-success-subtle text-success border border-success-subtle">Production Ready</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="endpoint-url mb-4">
+                                <span>/v1/account/balance</span>
+                                <button class="copy-btn" title="Copy URL"><i class="bi bi-clipboard"></i></button>
+                            </div>
+                            
+                            <p class="text-muted mb-4">Returns the current balance and transaction history for the authenticated user. This endpoint requires a valid API Key with <code>read:account</code> permissions.</p>
+                            
+                            <div class="row g-4">
+                                <div class="col-xl-6">
+                                    <h6 class="text-uppercase small fw-bold text-muted mb-3">Query Parameters</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-sm param-table">
+                                            <thead>
+                                                <tr><th>Parameter</th><th>Type</th><th>Required</th></tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><code class="text-primary">currency</code></td>
+                                                    <td><code>string</code></td>
+                                                    <td><span class="text-danger">Required</span></td>
+                                                </tr>
+                                                <tr><td colspan="3" class="text-muted smaller border-0 pt-0">The ISO 4217 currency code (e.g. <code>USD</code>, <code>EUR</code>).</td></tr>
+                                                <tr>
+                                                    <td><code class="text-primary">limit</code></td>
+                                                    <td><code>integer</code></td>
+                                                    <td><span class="text-muted">Optional</span></td>
+                                                </tr>
+                                                <tr><td colspan="3" class="text-muted smaller border-0 pt-0">Number of transactions to return (Default: 10, Max: 100).</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <h6 class="text-uppercase small fw-bold text-muted mb-3">Response Example</h6>
+                                    <div class="terminal-window">
+                                        <div class="terminal-header d-flex justify-content-between">
+                                            <span class="small text-muted mono-font">200 OK</span>
+                                            <button class="copy-btn"><i class="bi bi-clipboard"></i></button>
+                                        </div>
+                                        <pre class="m-0"><code class="language-json">{
+  "status": "success",
   "data": {
-    "amount": 5000,
-    "status": "paid"
+    "balance": 1250.75,
+    "currency": "USD",
+    "updated_at": "2026-05-13T10:00:00Z"
   }
 }</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 5: Authentication Guide -->
-    <section class="section-padding bg-light-subtle">
-        <div class="container">
-            <div class="row align-items-center mb-4" data-aos="fade-right">
-                <div class="col-auto">
-                    <img src="assets/img/service_auth.png" alt="Auth" style="height: 50px;">
-                </div>
-                <div class="col">
-                    <h2 class="fw-bold m-0">04. Authentication Flow</h2>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="p-4 border rounded bg-white h-100 glass-card">
-                        <h5 class="fw-bold mb-3">API Key Auth</h5>
-                        <p class="small text-muted">The simplest way to authenticate. Pass your key in the <code>Authorization</code> header.</p>
-                        <div class="bg-light p-3 rounded mt-3">
-                            <code class="small">Authorization: Bearer sk_test_123...</code>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="p-4 border rounded bg-white h-100 glass-card">
-                        <h5 class="fw-bold mb-3">OAuth 2.0 Flow</h5>
-                        <p class="small text-muted">For third-party integrations, we support the standard OAuth 2.0 authorization code grant.</p>
-                        <ul class="small text-muted mt-3">
-                            <li>1. Redirect to Authorization URL</li>
-                            <li>2. User grants access</li>
-                            <li>3. Exchange code for Token</li>
-                        </ul>
+                </section>
+
+                <!-- Section 2: SDK Samples -->
+                <section id="sdk-samples" class="pb-5 mb-5 border-bottom">
+                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
+                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                            <i class="bi bi-code-slash fs-3 text-primary"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold m-0">SDK Implementation</h2>
+                            <p class="text-muted m-0">Pre-built libraries for your favorite programming languages.</p>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
+                        <div class="card-header bg-transparent border-0 p-0">
+                            <ul class="nav nav-tabs sdk-tabs border-bottom" id="sdkTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="node-tab" data-bs-toggle="tab" data-bs-target="#node-panel" type="button" role="tab">Node.js</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="python-tab" data-bs-toggle="tab" data-bs-target="#python-panel" type="button" role="tab">Python</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="go-tab" data-bs-toggle="tab" data-bs-target="#go-panel" type="button" role="tab">Go</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="sdkTabContent">
+                            <div class="tab-pane fade show active" id="node-panel" role="tabpanel">
+                                <div class="p-0 position-relative">
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <pre class="m-0 rounded-0"><code class="language-javascript">const forge = require('apiforge-node')('your_api_key');
+
+async function getBalance() {
+  try {
+    const balance = await forge.account.getBalance({
+      currency: 'USD'
+    });
+    console.log(`Current Balance: ${balance.amount} ${balance.currency}`);
+  } catch (error) {
+    console.error('API Error:', error.message);
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="python-panel" role="tabpanel">
+                                <div class="p-0 position-relative">
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <pre class="m-0 rounded-0"><code class="language-python">from apiforge import Client
+
+client = Client(api_key="your_api_key")
+
+def get_balance():
+    try:
+        balance = client.account.get_balance(currency="USD")
+        print(f"Current Balance: {balance['amount']} {balance['currency']}")
+    except Exception as e:
+        print(f"API Error: {str(e)}")</code></pre>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="go-panel" role="tabpanel">
+                                <div class="p-0 position-relative">
+                                    <button class="copy-btn position-absolute top-0 end-0 m-3 z-1" title="Copy Code"><i class="bi bi-clipboard"></i></button>
+                                    <pre class="m-0 rounded-0"><code class="language-go">package main
+
+import (
+    "fmt"
+    "github.com/apiforge/apiforge-go"
+)
+
+func main() {
+    client := apiforge.NewClient("your_api_key")
+    
+    balance, err := client.Account.GetBalance("USD")
+    if err != nil {
+        fmt.Printf("API Error: %v\n", err)
+        return
+    }
+    
+    fmt.Printf("Current Balance: %f %s\n", balance.Amount, balance.Currency)
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Webhooks -->
+                <section id="webhooks" class="pb-5 mb-5 border-bottom">
+                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
+                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                            <i class="bi bi-lightning fs-3 text-primary"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold m-0">Webhook Events</h2>
+                            <p class="text-muted m-0">Real-time event notifications delivered via HTTP POST.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-xl-5" data-aos="fade-right">
+                            <div class="card border-0 shadow-sm glass-card p-4 h-100">
+                                <h5 class="fw-bold mb-3">payment.succeeded</h5>
+                                <p class="small text-muted mb-4">This event is triggered immediately after a payment transaction is successfully authorized and captured by the banking network.</p>
+                                
+                                <h6 class="text-uppercase small fw-bold text-muted mb-3">Event Metadata</h6>
+                                <ul class="list-unstyled small">
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                                        <div>
+                                            <div class="fw-bold">Retry Logic</div>
+                                            <span class="text-muted">Retries up to 5 times with exponential backoff.</span>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start">
+                                        <i class="bi bi-check-circle-fill text-success me-3 mt-1"></i>
+                                        <div>
+                                            <div class="fw-bold">Signature Verification</div>
+                                            <span class="text-muted">Includes <code>X-Forge-Signature</code> for security.</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-7" data-aos="fade-left">
+                            <div class="terminal-window h-100">
+                                <div class="terminal-header d-flex justify-content-between">
+                                    <span class="small text-muted mono-font">Payload: JSON</span>
+                                    <button class="copy-btn"><i class="bi bi-clipboard"></i></button>
+                                </div>
+                                <pre class="m-0"><code class="language-json">{
+  "id": "evt_987654321",
+  "object": "event",
+  "created": 1652432400,
+  "type": "payment.succeeded",
+  "data": {
+    "object": {
+      "id": "pay_555666",
+      "amount": 4999,
+      "currency": "usd",
+      "status": "succeeded",
+      "customer": "cus_abc123"
+    }
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Authentication Flow -->
+                <section id="auth-flow" class="pb-5 mb-5">
+                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
+                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                            <i class="bi bi-shield-lock fs-3 text-primary"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold m-0">Authentication Flow</h2>
+                            <p class="text-muted m-0">Secure ways to access the APIForge platform.</p>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="card border-0 shadow-sm glass-card p-4 h-100">
+                                <div class="step-indicator">1</div>
+                                <h5 class="fw-bold">Generate API Key</h5>
+                                <p class="text-muted small">Go to your Dashboard settings and generate a Secret Key. Never share this key or expose it in client-side code.</p>
+                                <div class="bg-dark p-3 rounded mt-auto">
+                                    <code class="text-success smaller">Authorization: Bearer sk_live_••••••••••••</code>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card border-0 shadow-sm glass-card p-4 h-100">
+                                <div class="step-indicator">2</div>
+                                <h5 class="fw-bold">OAuth 2.0 Integration</h5>
+                                <p class="text-muted small">For multi-tenant applications, use our OAuth flow to securely request access to your customers' data.</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm mt-auto w-fit">View OAuth Docs</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer-padding border-top">
@@ -265,7 +497,45 @@ async function getBalance() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Copy to clipboard functionality
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const parent = this.closest('.endpoint-url, .terminal-window, .position-relative');
+                const code = parent.querySelector('code, span:first-child').innerText;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    const icon = this.querySelector('i');
+                    icon.classList.replace('bi-clipboard', 'bi-check2');
+                    setTimeout(() => {
+                        icon.classList.replace('bi-check2', 'bi-clipboard');
+                    }, 2000);
+                });
+            });
+        });
+
+        // Sidebar active state on scroll
+        window.addEventListener('scroll', () => {
+            let current = "";
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.sidebar-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
