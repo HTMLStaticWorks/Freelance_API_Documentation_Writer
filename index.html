@@ -57,19 +57,19 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section section-padding position-relative overflow-hidden">
+    <section class="hero-section section-padding position-relative overflow-hidden bg-image bg-overlay" style="background-image: url('assets/img/hero_bg.png');">
         <div class="bg-blob blob-1"></div>
         <div class="bg-blob blob-2"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h1 class="display-3 mb-4">Professional API Documentation for Modern <span class="text-primary">Developer Platforms</span></h1>
-                    <p class="lead mb-5 text-muted">We help SaaS companies and engineering teams build world-class documentation that developers actually want to use.</p>
+                    <h1 class="display-3 mb-4 text-white">Professional API Documentation for Modern <span class="text-primary">Developer Platforms</span></h1>
+                    <p class="lead mb-5 text-white-50">We help SaaS companies and engineering teams build world-class documentation that developers actually want to use.</p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="contact.html" class="btn btn-primary btn-lg">Book Consultation</a>
                         <a href="api-samples.html" class="btn btn-outline-primary btn-lg">View Samples</a>
                     </div>
-                    <div class="mt-5 d-flex align-items-center gap-4 text-muted small">
+                    <div class="mt-5 d-flex align-items-center gap-4 text-white-50 small">
                         <span><i class="bi bi-check2-circle text-primary me-2"></i>OpenAPI / Swagger</span>
                         <span><i class="bi bi-check2-circle text-primary me-2"></i>SDK Documentation</span>
                         <span><i class="bi bi-check2-circle text-primary me-2"></i>Postman Collections</span>
@@ -118,21 +118,27 @@
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 p-4 glass-card">
-                        <div class="mb-3"><i class="bi bi-file-earmark-code fs-1 text-primary"></i></div>
+                        <div class="mb-3">
+                            <img src="assets/img/service_openapi.png" alt="OpenAPI" class="service-card-img">
+                        </div>
                         <h3>OpenAPI & Swagger</h3>
                         <p class="text-muted">Hand-crafted machine-readable specifications that serve as the single source of truth for your API.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 p-4 glass-card">
-                        <div class="mb-3"><i class="bi bi-journal-code fs-1 text-primary"></i></div>
+                        <div class="mb-3">
+                            <img src="assets/img/service_sdk.png" alt="SDK" class="service-card-img">
+                        </div>
                         <h3>SDK Documentation</h3>
                         <p class="text-muted">Language-specific implementation guides for Python, JS, Go, and more to accelerate developer onboarding.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 p-4 glass-card">
-                        <div class="mb-3"><i class="bi bi-shield-lock fs-1 text-primary"></i></div>
+                        <div class="mb-3">
+                            <img src="assets/img/service_auth.png" alt="Auth" class="service-card-img">
+                        </div>
                         <h3>Auth & Security</h3>
                         <p class="text-muted">Clear, step-by-step guides for OAuth2, JWT, and API Key authentication flows.</p>
                     </div>
@@ -142,7 +148,7 @@
     </section>
 
     <!-- Section 2: Technical Expertise -->
-    <section class="section-padding">
+    <section class="section-padding bg-soft-gradient">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5" data-aos="fade-right">
@@ -233,7 +239,7 @@
     </section>
 
     <!-- Section 4: Testimonials -->
-    <section class="section-padding">
+    <section class="section-padding bg-dot-pattern">
         <div class="container">
             <h2 class="text-center mb-5">What engineering leaders say</h2>
             <div class="row g-4">
@@ -241,7 +247,7 @@
                     <div class="card p-4 border-0 shadow-sm testimonial-card">
                         <p class="fst-italic">"APIForge transformed our messy internal notes into world-class public documentation. Our developer onboarding time dropped by 40%."</p>
                         <div class="d-flex align-items-center mt-3">
-                            <div class="bg-secondary rounded-circle me-3" style="width: 40px; height: 40px;"></div>
+                            <img src="assets/img/testimonial_1.png" alt="Sarah Chen" class="rounded-circle me-3 testimonial-avatar">
                             <div>
                                 <h6 class="mb-0 fw-bold">Sarah Chen</h6>
                                 <small class="text-muted">CTO at TechFlow</small>
@@ -253,7 +259,7 @@
                     <div class="card p-4 border-0 shadow-sm testimonial-card">
                         <p class="fst-italic">"The level of technical depth they brought to our GraphQL documentation was impressive. They truly understand developer needs."</p>
                         <div class="d-flex align-items-center mt-3">
-                            <div class="bg-secondary rounded-circle me-3" style="width: 40px; height: 40px;"></div>
+                            <img src="assets/img/testimonial_2.png" alt="Marcus Thorne" class="rounded-circle me-3 testimonial-avatar">
                             <div>
                                 <h6 class="mb-0 fw-bold">Marcus Thorne</h6>
                                 <small class="text-muted">Head of Engineering at CloudScale</small>
@@ -266,7 +272,7 @@
     </section>
 
     <!-- Section 5: Trusted By -->
-    <section class="section-padding bg-light-subtle">
+    <section class="section-padding bg-dark-section">
         <div class="container text-center">
             <h5 class="text-uppercase text-muted small fw-bold mb-5">Trusted by innovative engineering teams</h5>
             <div class="row g-4 align-items-center opacity-50">
@@ -281,7 +287,7 @@
     </section>
 
     <!-- Section 6: Statistics -->
-    <section class="section-padding">
+    <section class="section-padding bg-light-subtle">
         <div class="container">
             <div class="row g-4 text-center">
                 <div class="col-6 col-lg-3">

@@ -9,13 +9,62 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dashboard Sidebar Toggles
-    const sidebarThemeToggle = document.getElementById('theme-toggle-sidebar');
-    const sidebarRtlToggle = document.getElementById('rtl-toggle-sidebar');
+    // --- Theme & RTL Logic ---
+    const htmlElement = document.documentElement;
+    const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-sidebar');
+    const rtlToggles = document.querySelectorAll('#rtl-toggle, #rtl-toggle-sidebar');
+
+    function applyTheme(theme) {
+        htmlElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeToggles.forEach(toggle => {
+            const icon = toggle.querySelector('i');
+            const span = toggle.querySelector('span');
+            if (theme === 'dark') {
+                if (icon) icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill') || icon.classList.replace('bi-moon-stars', 'bi-sun');
+                if (span) span.textContent = 'Light Mode';
+            } else {
+                if (icon) icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill') || icon.classList.replace('bi-sun', 'bi-moon-stars');
+                if (span) span.textContent = 'Dark Mode';
+            }
+        });
+    }
+
+    function applyDirection(dir) {
+        htmlElement.setAttribute('dir', dir);
+        localStorage.setItem('dir', dir);
+        rtlToggles.forEach(toggle => {
+            const span = toggle.querySelector('span');
+            if (span) {
+                span.textContent = dir === 'ltr' ? 'RTL Mode' : 'LTR Mode';
+            } else {
+                toggle.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
+            }
+        });
+    }
+
+    // Initialize
+    applyTheme(localStorage.getItem('theme') || 'light');
+    applyDirection(localStorage.getItem('dir') || 'ltr');
+
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+            applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+    });
+
+    rtlToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const currentDir = htmlElement.getAttribute('dir') || 'ltr';
+            applyDirection(currentDir === 'ltr' ? 'rtl' : 'ltr');
+        });
+    });
+
+    // Dashboard Sidebar Toggles (Mobile View)
     const sidebarToggleBtn = document.getElementById('sidebar-toggle');
     const sidebar = document.querySelector('.dashboard-sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
-    const htmlElement = document.documentElement;
 
     if (sidebarToggleBtn && sidebar) {
         sidebarToggleBtn.addEventListener('click', () => {
@@ -38,52 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    if (sidebarThemeToggle) {
-        const themeIcon = sidebarThemeToggle.querySelector('i');
-        const themeText = sidebarThemeToggle.querySelector('span');
-        
-        // Initialize theme from storage
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', savedTheme);
-        updateSidebarThemeUI(savedTheme);
-
-        sidebarThemeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateSidebarThemeUI(newTheme);
-        });
-
-        function updateSidebarThemeUI(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.replace('bi-moon-stars', 'bi-sun');
-                themeText.textContent = 'Light Mode';
-            } else {
-                themeIcon.classList.replace('bi-sun', 'bi-moon-stars');
-                themeText.textContent = 'Dark Mode';
-            }
-        }
-    }
-
-    if (sidebarRtlToggle) {
-        const rtlText = sidebarRtlToggle.querySelector('span');
-        const savedDir = localStorage.getItem('dir') || 'ltr';
-        htmlElement.setAttribute('dir', savedDir);
-        rtlText.textContent = savedDir === 'ltr' ? 'RTL Mode' : 'LTR Mode';
-
-        sidebarRtlToggle.addEventListener('click', () => {
-            const currentDir = htmlElement.getAttribute('dir');
-            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
-            htmlElement.setAttribute('dir', newDir);
-            localStorage.setItem('dir', newDir);
-            rtlText.textContent = newDir === 'ltr' ? 'RTL Mode' : 'LTR Mode';
-        });
-    }
-
-    // Original Header Theme Toggle (Keep for compatibility if exists elsewhere)
-    const themeToggle = document.getElementById('theme-toggle');
 
     // Dashboard Navigation Logic
     const dashboardNav = document.getElementById('dashboard-nav');

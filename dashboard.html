@@ -46,24 +46,7 @@
             }
         }
         
-        /* RTL Support for Sidebar (Moves it to the left) */
-        [dir="rtl"] .dashboard-sidebar {
-            right: auto;
-            left: 0;
-            transform: translateX(-100%);
-        }
-        [dir="rtl"] .dashboard-sidebar.show {
-            transform: translateX(0);
-        }
-        [dir="rtl"] .dashboard-main {
-            margin-right: 0;
-            margin-left: 220px;
-        }
-        @media (max-width: 991.98px) {
-            [dir="rtl"] .dashboard-main {
-                margin-left: 0;
-            }
-        }
+        /* Dashboard Sidebar overrides are in style.css */
 
         .progress { height: 8px; border-radius: 4px; }
         .stat-card { border-radius: 12px; padding: 1.5rem; }
