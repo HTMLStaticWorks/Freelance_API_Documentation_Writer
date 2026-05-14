@@ -246,6 +246,31 @@
     text-align: right;
 }
 
+.dropdown-menu {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-item {
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary-color);
+    color: white !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 [dir="rtl"] .bi-arrow-right::before {
     content: "\f12f";
 }
@@ -304,12 +329,15 @@
     }
 }
 
+html,
 body {
     font-family: var(--body-font);
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
     line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 h1,
@@ -342,6 +370,21 @@ h6 {
     object-fit: contain;
 }
 
+.navbar {
+    transition: all 0.3s ease;
+    padding: 0.8rem 0;
+}
+
+.navbar.sticky-top {
+    backdrop-filter: blur(10px);
+    background-color: rgba(var(--bg-color-rgb, 255, 255, 255), 0.8);
+    border-bottom: 1px solid rgba(var(--border-color-rgb, 226, 232, 240), 0.5);
+}
+
+[data-bs-theme="dark"] .navbar.sticky-top {
+    background-color: rgba(15, 23, 42, 0.8);
+}
+
 .nav-link {
     color: var(--text-color) !important;
     font-weight: 500;
@@ -358,6 +401,39 @@ h6 {
     color: var(--secondary-color) !important;
 }
 
+.theme-toggle, .rtl-toggle {
+    border-radius: 50px !important;
+    width: 38px;
+    height: 38px;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.rtl-toggle {
+    font-size: 1.1rem;
+}
+
+/* Enhanced styling for text-based RTL toggle */
+.btn-rtl-text {
+    width: auto !important;
+    min-width: 44px;
+    padding: 0 10px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.theme-toggle:hover, .rtl-toggle:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+    border-color: var(--secondary-color) !important;
+    transform: translateY(-2px);
+}
+
 .nav-link.active::after {
     content: '';
     position: absolute;
@@ -369,18 +445,31 @@ h6 {
     border-radius: 2px;
 }
 
-.btn-primary {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+.btn-primary, 
+.btn-outline-primary {
     font-weight: 600;
     padding: 0.6rem 1.5rem;
     border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: white;
 }
 
 .btn-outline-primary {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
-    font-weight: 600;
+}
+
+.btn-sm {
+    padding: 0.4rem 1.2rem !important;
+    font-size: 0.85rem !important;
 }
 
 .code-block {
@@ -488,11 +577,13 @@ h6 {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    color: var(--text-color);
 }
 
 [data-theme="dark"] .glass-card {
     background: rgba(30, 41, 59, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
 }
 
 /* Expertise Badges */
@@ -569,8 +660,15 @@ h6 {
         padding: 1rem;
         border-radius: 8px;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        margin-top: 1rem;
         border: 1px solid var(--border-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        margin-top: 0.5rem;
     }
 
     .navbar-nav {
@@ -594,6 +692,39 @@ h6 {
         font-size: 1rem;
     }
 
+    .navbar-toggler {
+        border-color: var(--border-color) !important;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .navbar-toggler-icon {
+        filter: var(--toggler-filter, none);
+    }
+}
+
+:root {
+    --toggler-filter: none;
+}
+
+[data-theme="dark"] {
+    --toggler-filter: invert(1) brightness(2);
+}
+
+/* If the navbar is dark in light mode (e.g. over hero), we can force it */
+.navbar-toggler-icon {
+    filter: invert(1) brightness(2); /* Default to light for dark backgrounds */
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    filter: invert(1) brightness(2);
+}
+
+/* If the navbar is white in light mode, we reset it */
+[data-theme="light"] .navbar:not(.bg-dark) .navbar-toggler-icon {
+    filter: none;
+}
+
+@media (max-width: 1199.98px) {
     .nav-link {
         padding: 0.75rem 1rem !important;
         margin: 0;
@@ -614,10 +745,127 @@ h6 {
     }
 
     .navbar .btn {
-        width: 100%;
-        justify-content: center;
+        width: auto;
     }
 }
+
+@media (max-width: 991.98px) {
+    /* Center text and headings on tablet/mobile (Sections and Hero only) */
+    .section-padding, .hero-section {
+        text-align: center !important;
+    }
+
+    .section-padding h1, .section-padding h2, .section-padding h3, 
+    .section-padding h4, .section-padding h5, .section-padding h6, 
+    .section-padding p, .section-padding .lead,
+    .hero-section h1, .hero-section h2, .hero-section p, .hero-section .lead {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Stack buttons vertically whenever they are side by side */
+    .d-flex.gap-3, 
+    .d-flex.gap-2, 
+    .d-flex.gap-4,
+    .d-flex.justify-content-center {
+        flex-direction: column !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+    }
+
+    /* Specifically ensure footer remains compact and left-aligned */
+    .footer-padding {
+        text-align: left !important;
+        padding: 30px 0 15px 0 !important;
+    }
+
+    .footer-padding h5, .footer-padding p, .footer-padding .text-muted {
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Footer Socials Exception: Keep them horizontal */
+    .footer-padding .d-flex.gap-3,
+    .footer-padding .d-flex.gap-2 {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+
+    .footer-padding .newsletter-box {
+        margin-top: 1.5rem;
+    }
+    
+    .footer-padding .col-6 {
+        margin-bottom: 1rem;
+    }
+    
+    /* Exception for navbar and specific small layouts */
+    .navbar .d-flex, .admin-profile, .sidebar-footer .btn {
+        flex-direction: row !important;
+    }
+    
+    .dashboard-sidebar .toggle-btn {
+        flex-direction: row !important;
+        justify-content: center !important;
+    }
+
+    .hero-section .btn,
+    .section-padding .btn,
+    .footer-padding .btn {
+        width: 100% !important;
+        max-width: 350px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Lists: center left alignment */
+    /* Center the list block but keep bullet points aligned to the left */
+    .section-padding ul:not(.navbar-nav):not(.dropdown-menu), 
+    .section-padding ol,
+    .hero-section ul,
+    .footer-padding ul:not(.navbar-nav) {
+        display: inline-block !important;
+        text-align: left !important;
+        padding-left: 1.5rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    /* Reset for card contents to ensure they are centered */
+    .card-body, .card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .card-body p, .card-body h1, .card-body h2, .card-body h3, .card-body h4 {
+        text-align: center !important;
+    }
+
+    /* Keep code and terminal content left-aligned */
+    .terminal-window, .terminal-window *, pre, code, .param-table {
+        text-align: left !important;
+    }
+    
+    .terminal-window {
+        align-items: flex-start !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
 
 .footer-padding {
     padding: 40px 0 20px 0;
@@ -664,10 +912,29 @@ h6 {
 }
 
 .newsletter-box {
-    background-color: var(--card-bg);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.newsletter-box h5 {
+    color: #ffffff !important;
+}
+
+.newsletter-box .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.newsletter-box .form-control {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+.newsletter-box .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .card {
@@ -675,13 +942,14 @@ h6 {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     transition: transform 0.2s;
+    color: var(--text-color);
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-#theme-toggle {
+#theme-toggle, #rtl-toggle {
     cursor: pointer;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -689,40 +957,19 @@ h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
+    min-width: 38px;
     height: 38px;
     border-radius: 8px;
-    padding: 0;
+    padding: 0 0.5rem;
     transition: all 0.2s;
-    margin-left: 0.5rem;
 }
 
-#theme-toggle:hover {
+#theme-toggle:hover, #rtl-toggle:hover {
     background-color: var(--border-color);
     border-color: var(--secondary-color);
     color: var(--secondary-color);
 }
 
-#rtl-toggle {
-    height: 38px;
-    padding: 0 1rem;
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.navbar .btn-sm {
-    height: 34px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-}
 
 .cursor-pointer {
     cursor: pointer;
@@ -860,6 +1107,15 @@ h6 {
     backdrop-filter: blur(5px);
 }
 
+.auth-page .form-control {
+    transition: all 0.3s ease;
+}
+
+.auth-page .form-control:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.1);
+}
+
 /* Social Login Styles */
 .social-login-divider {
     position: relative;
@@ -971,6 +1227,45 @@ a:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.auth-link {
+    color: var(--secondary-color);
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+}
+
+.auth-link:hover {
+    color: var(--accent-color) !important;
+    transform: scale(1.05);
+}
+
+[data-theme="dark"] .auth-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Case Study Link Hover Effect */
+.case-study-link {
+    color: var(--secondary-color) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.case-study-link i {
+    transition: transform 0.3s ease;
+}
+
+.case-study-link:hover {
+    color: var(--accent-color) !important;
+    transform: translateY(-4px);
+}
+
+.case-study-link:hover i {
+    transform: translateX(5px);
+}
+
+
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -987,4 +1282,21 @@ a:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
+}
+/* Dashboard Specific UI Utilities */
+.btn-action-fixed {
+    min-width: 100px !important;
+    justify-content: center !important;
+}
+
+@media (min-width: 576px) {
+    .btn-header-fixed {
+        min-width: 130px !important;
+    }
+}
+
+.stat-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }

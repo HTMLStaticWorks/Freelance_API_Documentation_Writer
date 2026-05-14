@@ -32,37 +32,45 @@
             <a class="navbar-brand" href="index.html">
                 <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home 1 (Modern)</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Home 2 (Enterprise)</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2">
+                    
+                    <!-- Themes & RTL -->
+                    <li class="nav-item ms-xl-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-secondary theme-toggle" aria-label="Toggle theme">
+                                <i class="bi bi-moon-stars-fill"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary rtl-toggle btn-rtl-text" aria-label="Toggle RTL">
+                                RTL
+                            </button>
+                        </div>
+                    </li>
+
+                    <!-- Login & Dashboard -->
+                    <li class="nav-item ms-xl-3">
                         <a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a>
                     </li>
                     <li class="nav-item ms-lg-2">
                         <a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <button id="rtl-toggle"
-                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
-                            <span class="d-none d-xl-inline">RTL</span>
-                        </button>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <button id="theme-toggle"
-                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2"
-                            aria-label="Toggle dark mode">
-                            <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
-                        </button>
                     </li>
                 </ul>
             </div>
@@ -125,7 +133,7 @@
                 <h2 class="h1">Everything your developers need</h2>
                 <p class="text-muted">Comprehensive documentation services for the entire API lifecycle.</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 p-4 glass-card">
                         <div class="mb-3">
@@ -164,7 +172,7 @@
     <section class="section-padding bg-soft-gradient">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5" data-aos="fade-right">
+                <div class="col-lg-5 text-center text-lg-start" data-aos="fade-right">
                     <h2 class="mb-4">Technical expertise that speaks developer</h2>
                     <p class="text-muted mb-4">We don't just write; we understand the underlying architecture. Our
                         documentation reflects a deep knowledge of modern engineering practices.</p>
@@ -345,18 +353,18 @@
     <footer class="footer-padding border-top">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3">
+                <div class="col-md-12 col-lg-4">
                     <a class="navbar-brand d-block mb-3" href="index.html">
                         <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
                     </a>
                     <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
-                    <div class="d-flex gap-3">
+                    <div class="d-flex gap-3 mb-4">
                         <a href="#" class="text-muted fs-5"><i class="bi bi-github"></i></a>
                         <a href="#" class="text-muted fs-5"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="text-muted fs-5"><i class="bi bi-linkedin"></i></a>
                     </div>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
                     <ul class="list-unstyled small">
                         <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
@@ -364,7 +372,7 @@
                         <li><a href="pricing.html" class="text-muted text-decoration-none">Pricing</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
                     <ul class="list-unstyled small">
                         <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
@@ -372,7 +380,7 @@
                         <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-md-12 col-lg-4">
                     <div class="newsletter-box glass-card">
                         <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
                         <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in

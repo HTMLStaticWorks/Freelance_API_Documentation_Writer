@@ -18,31 +18,48 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home 1 (Modern)</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Home 2 (Enterprise)</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <button id="rtl-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
-                            <span class="d-none d-xl-inline">RTL</span>
-                        </button>
+                    
+                    <!-- Themes & RTL -->
+                    <li class="nav-item ms-xl-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-secondary theme-toggle" aria-label="Toggle theme">
+                                <i class="bi bi-moon-stars-fill"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary rtl-toggle btn-rtl-text" aria-label="Toggle RTL">
+                                RTL
+                            </button>
+                        </div>
+                    </li>
+
+                    <!-- Login & Dashboard -->
+                    <li class="nav-item ms-xl-3">
+                        <a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2" aria-label="Toggle dark mode">
-                            <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
-                        </button>
+                        <a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -108,21 +125,21 @@
         <div class="container">
             <div class="row g-4 text-center">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card h-100">
                         <i class="bi bi-envelope fs-1 text-primary mb-3 d-block"></i>
                         <h5 class="fw-bold">Email Us</h5>
                         <p class="text-muted small">hello@apiforge.com</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card h-100">
                         <i class="bi bi-geo-alt fs-1 text-primary mb-3 d-block"></i>
                         <h5 class="fw-bold">Our Studio</h5>
                         <p class="text-muted small">123 Documentation Ave,<br>Tech City, TC 10101</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="p-4 bg-white rounded shadow-sm glass-card">
+                    <div class="p-4 bg-white rounded shadow-sm glass-card h-100">
                         <i class="bi bi-calendar-check fs-1 text-primary mb-3 d-block"></i>
                         <h5 class="fw-bold">Book a Call</h5>
                         <p class="text-muted small">Schedule a 15-min discovery call.</p>
@@ -134,14 +151,8 @@
 
     <!-- Section 3: Map -->
     <section class="section-padding p-0" data-aos="zoom-in">
-        <div class="ratio ratio-21x9 bg-secondary-subtle">
-            <div class="d-flex align-items-center justify-content-center text-muted">
-                <div class="text-center">
-                    <i class="bi bi-map fs-1"></i>
-                    <p class="mt-2 fw-bold">Interactive Map Location</p>
-                    <p class="small">Google Maps API placeholder</p>
-                </div>
-            </div>
+        <div class="ratio ratio-16x9 bg-secondary-subtle">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.4194155!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter%20HQ!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 
@@ -149,28 +160,38 @@
     <footer class="footer-padding border-top">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3">
-                    <a class="navbar-brand d-block mb-3" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
+                <div class="col-md-12 col-lg-4">
+                    <a class="navbar-brand d-block mb-3" href="index.html">
+                        <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+                    </a>
                     <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-linkedin"></i></a>
+                    </div>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
                     <ul class="list-unstyled small">
                         <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
                         <li><a href="api-samples.html" class="text-muted text-decoration-none">Samples</a></li>
+                        <li><a href="pricing.html" class="text-muted text-decoration-none">Pricing</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
                     <ul class="list-unstyled small">
                         <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
                         <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-md-12 col-lg-4">
                     <div class="newsletter-box glass-card">
                         <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
-                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in
+                            your inbox.</p>
                         <form>
                             <div class="input-group">
                                 <input type="email" class="form-control" placeholder="your@email.com">
@@ -191,3 +212,5 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+
+

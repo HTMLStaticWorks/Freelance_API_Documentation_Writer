@@ -18,36 +18,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .samples-sidebar {
-            position: sticky;
-            top: 100px;
-            height: calc(100vh - 120px);
-            overflow-y: auto;
-        }
 
-        .sidebar-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            color: var(--text-color);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.2s;
-            font-weight: 500;
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .sidebar-link:hover,
-        .sidebar-link.active {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-
-        .sidebar-link i {
-            margin-right: 10px;
-            font-size: 1.1rem;
-        }
 
         .method-badge {
             font-size: 0.75rem;
@@ -147,36 +118,48 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home 1 (Modern)</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Home 2 (Enterprise)</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3"
-                            href="login.html">Login</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3"
-                            href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <button id="rtl-toggle"
-                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
-                            <span class="d-none d-xl-inline">RTL</span>
-                        </button>
+                    
+                    <!-- Themes & RTL -->
+                    <li class="nav-item ms-xl-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-secondary theme-toggle" aria-label="Toggle theme">
+                                <i class="bi bi-moon-stars-fill"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary rtl-toggle btn-rtl-text" aria-label="Toggle RTL">
+                                RTL
+                            </button>
+                        </div>
+                    </li>
+
+                    <!-- Login & Dashboard -->
+                    <li class="nav-item ms-xl-3">
+                        <a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <button id="theme-toggle"
-                            class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2"
-                            aria-label="Toggle dark mode">
-                            <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
-                        </button>
+                        <a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </div>
@@ -184,43 +167,15 @@
     </nav>
 
     <!-- Main Content with Sidebar -->
-    <div class="container-fluid px-lg-5">
-        <div class="row g-5">
-            <!-- Sidebar -->
-            <div class="col-lg-3 d-none d-lg-block">
-                <div class="samples-sidebar py-5">
-                    <h6 class="text-uppercase fw-bold mb-3 small text-muted px-3">Documentation</h6>
-                    <a href="#rest-api" class="sidebar-link active">
-                        <i class="bi bi-hdd-network"></i> REST API Reference
-                    </a>
-                    <a href="#sdk-samples" class="sidebar-link">
-                        <i class="bi bi-code-slash"></i> SDK Implementation
-                    </a>
-                    <a href="#webhooks" class="sidebar-link">
-                        <i class="bi bi-lightning"></i> Webhook Events
-                    </a>
-                    <a href="#auth-flow" class="sidebar-link">
-                        <i class="bi bi-shield-lock"></i> Authentication Flow
-                    </a>
-
-                    <h6 class="text-uppercase fw-bold mt-5 mb-3 small text-muted px-3">Resources</h6>
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-file-earmark-code"></i> OpenAPI Spec
-                    </a>
-                    <a href="#" class="sidebar-link">
-                        <i class="bi bi-collection"></i> Postman Collection
-                    </a>
-                </div>
-            </div>
-
-            <!-- Content -->
-            <div class="col-lg-9">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
                 <!-- Hero Section Inside Content -->
                 <header class="py-5" data-aos="fade-up">
                     <div class="p-5 rounded-4 bg-primary text-white position-relative overflow-hidden">
-                        <div class="position-relative z-1">
+                        <div class="position-relative z-1 text-center">
                             <h1 class="display-4 fw-bold mb-3">Documentation Samples</h1>
-                            <p class="lead opacity-75 mb-0" style="max-width: 600px;">Explore our collection of
+                            <p class="lead opacity-75 mb-0 mx-auto" style="max-width: 600px;">Explore our collection of
                                 high-quality documentation styles and formats designed for developer success.</p>
                         </div>
                         <div class="bg-blob blob-1 opacity-25"></div>
@@ -229,15 +184,14 @@
 
                 <!-- Section 1: REST API Documentation -->
                 <section id="rest-api" class="pb-5 mb-5 border-bottom">
-                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
-                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
-                            <i class="bi bi-hdd-network fs-3 text-primary"></i>
-                        </div>
-                        <div>
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                                <i class="bi bi-hdd-network fs-3 text-primary"></i>
+                            </div>
                             <h2 class="fw-bold m-0">REST API Reference</h2>
-                            <p class="text-muted m-0">Detailed endpoint documentation with request/response examples.
-                            </p>
                         </div>
+                        <p class="text-muted m-0">Detailed endpoint documentation with request/response examples.</p>
                     </div>
 
                     <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
@@ -322,14 +276,14 @@
 
                 <!-- Section 2: SDK Samples -->
                 <section id="sdk-samples" class="pb-5 mb-5 border-bottom">
-                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
-                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
-                            <i class="bi bi-code-slash fs-3 text-primary"></i>
-                        </div>
-                        <div>
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                                <i class="bi bi-code-slash fs-3 text-primary"></i>
+                            </div>
                             <h2 class="fw-bold m-0">SDK Implementation</h2>
-                            <p class="text-muted m-0">Pre-built libraries for your favorite programming languages.</p>
                         </div>
+                        <p class="text-muted m-0">Pre-built libraries for your favorite programming languages.</p>
                     </div>
 
                     <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
@@ -414,14 +368,14 @@ func main() {
 
                 <!-- Section 3: Webhooks -->
                 <section id="webhooks" class="pb-5 mb-5 border-bottom">
-                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
-                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
-                            <i class="bi bi-lightning fs-3 text-primary"></i>
-                        </div>
-                        <div>
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                                <i class="bi bi-lightning fs-3 text-primary"></i>
+                            </div>
                             <h2 class="fw-bold m-0">Webhook Events</h2>
-                            <p class="text-muted m-0">Real-time event notifications delivered via HTTP POST.</p>
                         </div>
+                        <p class="text-muted m-0">Real-time event notifications delivered via HTTP POST.</p>
                     </div>
 
                     <div class="row g-4">
@@ -480,14 +434,14 @@ func main() {
 
                 <!-- Section 4: Authentication Flow -->
                 <section id="auth-flow" class="pb-5 mb-5">
-                    <div class="d-flex align-items-center mb-4" data-aos="fade-right">
-                        <div class="p-3 rounded-3 bg-primary-subtle me-3">
-                            <i class="bi bi-shield-lock fs-3 text-primary"></i>
-                        </div>
-                        <div>
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                                <i class="bi bi-shield-lock fs-3 text-primary"></i>
+                            </div>
                             <h2 class="fw-bold m-0">Authentication Flow</h2>
-                            <p class="text-muted m-0">Secure ways to access the APIForge platform.</p>
                         </div>
+                        <p class="text-muted m-0">Secure ways to access the APIForge platform.</p>
                     </div>
 
                     <div class="row g-4">
@@ -521,25 +475,34 @@ func main() {
     <footer class="footer-padding border-top">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3">
-                    <a class="navbar-brand d-block mb-3" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
+                <div class="col-md-12 col-lg-4">
+                    <a class="navbar-brand d-block mb-3" href="index.html">
+                        <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+                    </a>
                     <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-linkedin"></i></a>
+                    </div>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
                     <ul class="list-unstyled small">
                         <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
                         <li><a href="api-samples.html" class="text-muted text-decoration-none">Samples</a></li>
+                        <li><a href="pricing.html" class="text-muted text-decoration-none">Pricing</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
                     <ul class="list-unstyled small">
                         <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
+                        <li><a href="blog.html" class="text-muted text-decoration-none">Blog</a></li>
                         <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-md-12 col-lg-4">
                     <div class="newsletter-box glass-card">
                         <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
                         <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in
@@ -585,25 +548,9 @@ func main() {
             });
         });
 
-        // Sidebar active state on scroll
-        window.addEventListener('scroll', () => {
-            let current = "";
-            const sections = document.querySelectorAll('section[id]');
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
 
-            document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
     </script>
 </body>
 
 </html>
+

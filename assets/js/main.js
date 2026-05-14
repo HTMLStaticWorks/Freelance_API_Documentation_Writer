@@ -11,21 +11,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Theme & RTL Logic ---
     const htmlElement = document.documentElement;
-    const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-sidebar');
-    const rtlToggles = document.querySelectorAll('#rtl-toggle, #rtl-toggle-sidebar');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
+    const rtlToggles = document.querySelectorAll('.rtl-toggle');
 
     function applyTheme(theme) {
         htmlElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         themeToggles.forEach(toggle => {
             const icon = toggle.querySelector('i');
-            const span = toggle.querySelector('span');
             if (theme === 'dark') {
-                if (icon) icon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill') || icon.classList.replace('bi-moon-stars', 'bi-sun');
-                if (span) span.textContent = 'Light Mode';
+                if (icon) {
+                    icon.classList.remove('bi-moon-stars-fill', 'bi-moon-stars');
+                    icon.classList.add('bi-sun-fill');
+                }
             } else {
-                if (icon) icon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill') || icon.classList.replace('bi-sun', 'bi-moon-stars');
-                if (span) span.textContent = 'Dark Mode';
+                if (icon) {
+                    icon.classList.remove('bi-sun-fill', 'bi-sun');
+                    icon.classList.add('bi-moon-stars-fill');
+                }
             }
         });
     }
@@ -34,10 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         htmlElement.setAttribute('dir', dir);
         localStorage.setItem('dir', dir);
         rtlToggles.forEach(toggle => {
-            const span = toggle.querySelector('span');
-            if (span) {
-                span.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
-            } else if (!toggle.querySelector('i')) {
+            const icon = toggle.querySelector('i');
+            if (icon) {
+                // You can add logic here if you want to change an icon for RTL
+            }
+            // If it's a text-based toggle like 'RTL'/'LTR', keep it simple
+            if (toggle.classList.contains('btn-rtl-text')) {
                 toggle.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
             }
         });
@@ -48,16 +53,26 @@ document.addEventListener('DOMContentLoaded', () => {
     applyDirection(localStorage.getItem('dir') || 'ltr');
 
     themeToggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
             const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
             applyTheme(currentTheme === 'light' ? 'dark' : 'light');
+            // Close sidebar on mobile after theme change if toggle is in sidebar
+            if (toggle.closest('.dashboard-sidebar')) {
+                closeSidebarOnMobile();
+            }
         });
     });
 
     rtlToggles.forEach(toggle => {
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
             const currentDir = htmlElement.getAttribute('dir') || 'ltr';
             applyDirection(currentDir === 'ltr' ? 'rtl' : 'ltr');
+            // Close sidebar on mobile after RTL change if toggle is in sidebar
+            if (toggle.closest('.dashboard-sidebar')) {
+                closeSidebarOnMobile();
+            }
         });
     });
 
@@ -65,6 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarToggleBtn = document.getElementById('sidebar-toggle');
     const sidebar = document.querySelector('.dashboard-sidebar');
     const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    function closeSidebarOnMobile() {
+        if (window.innerWidth < 992 && sidebar && sidebar.classList.contains('show')) {
+            sidebar.classList.remove('show');
+            if (sidebarOverlay) sidebarOverlay.classList.add('d-none');
+            if (sidebarToggleBtn) {
+                const icon = sidebarToggleBtn.querySelector('i');
+                if (icon) icon.classList.replace('bi-x', 'bi-list');
+            }
+        }
+    }
 
     if (sidebarToggleBtn && sidebar) {
         sidebarToggleBtn.addEventListener('click', () => {
@@ -83,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sidebar.classList.remove('show');
                 sidebarOverlay.classList.add('d-none');
                 const icon = sidebarToggleBtn.querySelector('i');
-                icon.classList.replace('bi-x', 'bi-list');
+                if (icon) icon.classList.replace('bi-x', 'bi-list');
             });
         }
     }
@@ -126,6 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         pageTitle.textContent = sectionName;
                     }
                 }
+
+                // Close sidebar on mobile after selection
+                closeSidebarOnMobile();
             });
         });
     }

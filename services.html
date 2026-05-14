@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,52 +9,76 @@
     <!-- Fonts & CSS (same as index.html) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-xl sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index2.html">Home2</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="homeDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html">Home 1 (Modern)</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Home 2 (Enterprise)</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="api-samples.html">Samples</a></li>
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item ms-lg-2">
-                        <button id="rtl-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2">
-                            <span class="d-none d-xl-inline">RTL</span>
-                        </button>
+
+                    <!-- Themes & RTL -->
+                    <li class="nav-item ms-xl-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-sm btn-outline-secondary theme-toggle" aria-label="Toggle theme">
+                                <i class="bi bi-moon-stars-fill"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-secondary rtl-toggle btn-rtl-text"
+                                aria-label="Toggle RTL">
+                                RTL
+                            </button>
+                        </div>
+                    </li>
+
+                    <!-- Login & Dashboard -->
+                    <li class="nav-item ms-xl-3">
+                        <a class="btn btn-outline-primary btn-sm px-3" href="login.html">Login</a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <button id="theme-toggle" class="btn btn-sm btn-outline-secondary w-100 w-xl-auto py-2 py-xl-1 px-3 px-xl-2" aria-label="Toggle dark mode">
-                            <i class="bi bi-moon-stars-fill me-2 me-xl-0"></i> <span class="d-xl-none">Dark Mode</span>
-                        </button>
+                        <a class="btn btn-primary btn-sm px-3" href="dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="hero-section section-padding bg-light-subtle position-relative overflow-hidden bg-image bg-overlay" style="background-image: url('assets/img/services_bg.png');">
+    <header class="hero-section section-padding bg-light-subtle position-relative overflow-hidden bg-image bg-overlay"
+        style="background-image: url('assets/img/services_bg.png');">
 
         <div class="container text-center" data-aos="fade-up">
             <h1 class="display-4 fw-bold mb-3 text-white">Specialized API Services</h1>
-            <p class="lead text-white-50 mx-auto" style="max-width: 700px;">From machine-readable specs to language-specific SDK guides, we provide everything your developers need to succeed.</p>
+            <p class="lead text-white-50 mx-auto" style="max-width: 700px;">From machine-readable specs to
+                language-specific SDK guides, we provide everything your developers need to succeed.</p>
         </div>
     </header>
 
@@ -61,17 +86,7 @@
     <section class="section-padding bg-soft-gradient">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Core API Services</h2>
-            <div class="row g-5">
-                <!-- Service 1 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-sm p-4 glass-card">
-                        <div class="mb-4">
-                            <img src="assets/img/service_openapi.png" alt="Writing" class="service-card-img">
-                        </div>
-                        <h3 class="h4">API Documentation Writing</h3>
-                        <p class="text-muted">Detailed endpoint documentation including parameters, request bodies, response schemas, and status codes.</p>
-                    </div>
-                </div>
+            <div class="row g-5 justify-content-center">
                 <!-- Service 2 -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 border-0 shadow-sm p-4 glass-card">
@@ -79,7 +94,8 @@
                             <img src="assets/img/service_openapi.png" alt="OpenAPI" class="service-card-img">
                         </div>
                         <h3 class="h4">OpenAPI / Swagger</h3>
-                        <p class="text-muted">Creation of YAML/JSON specifications that integrate seamlessly with tools like SwaggerHub and Redoc.</p>
+                        <p class="text-muted">Creation of YAML/JSON specifications that integrate seamlessly with tools
+                            like SwaggerHub and Redoc.</p>
                     </div>
                 </div>
                 <!-- Service 3 -->
@@ -89,7 +105,8 @@
                             <img src="assets/img/service_sdk.png" alt="SDK" class="service-card-img">
                         </div>
                         <h3 class="h4">SDK Documentation</h3>
-                        <p class="text-muted">Guides for language-specific libraries, making it easy for developers to integrate your API in their preferred language.</p>
+                        <p class="text-muted">Guides for language-specific libraries, making it easy for developers to
+                            integrate your API in their preferred language.</p>
                     </div>
                 </div>
                 <!-- Service 4 -->
@@ -99,23 +116,41 @@
                             <img src="assets/img/service_auth.png" alt="Auth" class="service-card-img">
                         </div>
                         <h3 class="h4">Auth & Security Flows</h3>
-                        <p class="text-muted">Comprehensive guides for OAuth2, JWT, and API Key authentication to ensure secure integrations.</p>
+                        <p class="text-muted">Comprehensive guides for OAuth2, JWT, and API Key authentication to ensure
+                            secure integrations.</p>
+                    </div>
+                </div>
+                <!-- Service 1 -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100 border-0 shadow-sm p-4 glass-card">
+                        <div class="mb-4">
+                            <img src="assets/images/Service1.jfif" alt="Writing" class="service-card-img">
+                        </div>
+                        <h3 class="h4">API Documentation Writing</h3>
+                        <p class="text-muted">Detailed endpoint documentation including parameters, request bodies,
+                            response schemas, and status codes.</p>
                     </div>
                 </div>
                 <!-- Service 5 -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 border-0 shadow-sm p-4 glass-card">
-                        <div class="mb-4 text-primary"><i class="bi bi-bug fs-1"></i></div>
+                        <div class="mb-4">
+                            <img src="assets/images/Service5.jfif" alt="Errors" class="service-card-img">
+                        </div>
                         <h3 class="h4">Error Code Libraries</h3>
-                        <p class="text-muted">Structured references for all possible error codes, helping developers debug integrations quickly.</p>
+                        <p class="text-muted">Structured references for all possible error codes, helping developers
+                            debug integrations quickly.</p>
                     </div>
                 </div>
                 <!-- Service 6 -->
                 <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 border-0 shadow-sm p-4 glass-card">
-                        <div class="mb-4 text-primary"><i class="bi bi-play-circle fs-1"></i></div>
+                        <div class="mb-4">
+                            <img src="assets/images/Service6.jpg" alt="Interactive" class="service-card-img">
+                        </div>
                         <h3 class="h4">Interactive Examples</h3>
-                        <p class="text-muted">Live request/response examples and Postman collections for an interactive "try-it-now" experience.</p>
+                        <p class="text-muted">Live request/response examples and Postman collections for an interactive
+                            "try-it-now" experience.</p>
                     </div>
                 </div>
             </div>
@@ -126,23 +161,26 @@
     <section class="section-padding bg-light-subtle">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Specialty Solutions</h2>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="p-4 border rounded bg-white h-100 glass-card">
                         <h5 class="fw-bold text-primary">AI & ML APIs</h5>
-                        <p class="text-muted small">Specialized docs for LLM endpoints, prompt engineering guides, and model parameter references.</p>
+                        <p class="text-muted small">Specialized docs for LLM endpoints, prompt engineering guides, and
+                            model parameter references.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="p-4 border rounded bg-white h-100 glass-card">
                         <h5 class="fw-bold text-primary">FinTech Compliance</h5>
-                        <p class="text-muted small">Documentation that meets strict banking regulations and security standards for financial products.</p>
+                        <p class="text-muted small">Documentation that meets strict banking regulations and security
+                            standards for financial products.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="p-4 border rounded bg-white h-100 glass-card">
                         <h5 class="fw-bold text-primary">Webhooks & Events</h5>
-                        <p class="text-muted small">Detailed event-driven architecture guides, retry policies, and signature verification docs.</p>
+                        <p class="text-muted small">Detailed event-driven architecture guides, retry policies, and
+                            signature verification docs.</p>
                     </div>
                 </div>
             </div>
@@ -153,26 +191,29 @@
     <section class="section-padding bg-dot-pattern">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Strategy & Audit</h2>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center">
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-center p-3">
                         <i class="bi bi-search fs-2 mb-3 d-block text-primary"></i>
                         <h5 class="fw-bold">Docs Audit</h5>
-                        <p class="text-muted small">We analyze your existing docs for accuracy, clarity, and developer experience gaps.</p>
+                        <p class="text-muted small">We analyze your existing docs for accuracy, clarity, and developer
+                            experience gaps.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-center p-3">
                         <i class="bi bi-map fs-2 mb-3 d-block text-primary"></i>
                         <h5 class="fw-bold">Content Roadmap</h5>
-                        <p class="text-muted small">Long-term strategy for scaling your documentation as your API product grows.</p>
+                        <p class="text-muted small">Long-term strategy for scaling your documentation as your API
+                            product grows.</p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="text-center p-3">
                         <i class="bi bi-gear-wide-connected fs-2 mb-3 d-block text-primary"></i>
                         <h5 class="fw-bold">Portal Setup</h5>
-                        <p class="text-muted small">Configuring tools like Redocly, Docusaurus, or GitBook for a seamless docs experience.</p>
+                        <p class="text-muted small">Configuring tools like Redocly, Docusaurus, or GitBook for a
+                            seamless docs experience.</p>
                     </div>
                 </div>
             </div>
@@ -191,11 +232,18 @@
     <footer class="footer-padding border-top">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-3">
-                    <a class="navbar-brand d-block mb-3" href="index.html"><img src="assets/images/logo2.png" alt="Logo" class="brand-logo"></a>
+                <div class="col-md-12 col-lg-4">
+                    <a class="navbar-brand d-block mb-3" href="index.html">
+                        <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
+                    </a>
                     <p class="text-muted small">Professional API documentation for modern developer platforms.</p>
+                    <div class="d-flex gap-3 mb-4">
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-muted fs-5"><i class="bi bi-linkedin"></i></a>
+                    </div>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Platform</h5>
                     <ul class="list-unstyled small">
                         <li><a href="services.html" class="text-muted text-decoration-none">Services</a></li>
@@ -203,7 +251,7 @@
                         <li><a href="pricing.html" class="text-muted text-decoration-none">Pricing</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-lg-2">
+                <div class="col-6 col-md-6 col-lg-2">
                     <h5 class="mb-3 small fw-bold text-uppercase">Company</h5>
                     <ul class="list-unstyled small">
                         <li><a href="about.html" class="text-muted text-decoration-none">About</a></li>
@@ -211,10 +259,11 @@
                         <li><a href="contact.html" class="text-muted text-decoration-none">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-md-12 col-lg-4">
                     <div class="newsletter-box glass-card">
                         <h5 class="mb-2 small fw-bold text-uppercase">Newsletter</h5>
-                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in your inbox.</p>
+                        <p class="small text-muted mb-3">Get technical writing tips and API best practices directly in
+                            your inbox.</p>
                         <form>
                             <div class="input-group">
                                 <input type="email" class="form-control" placeholder="your@email.com">
@@ -234,4 +283,5 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
