@@ -116,6 +116,14 @@
     color: #93c5fd !important;
 }
 
+[data-theme="dark"] .text-dark-emphasis {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .list-group-item {
+    color: var(--text-color) !important;
+}
+
 /* Tracker Card (Dashboard) */
 .tracker-card {
     background-color: var(--bg-color);
@@ -125,6 +133,7 @@
 
 [data-theme="dark"] .tracker-card {
     background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .tracker-card:hover {
@@ -247,6 +256,7 @@
 }
 
 .dropdown-menu {
+    background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
@@ -254,11 +264,20 @@
     animation: fadeIn 0.2s ease-out;
 }
 
+[data-theme="dark"] .dropdown-menu {
+    background-color: var(--card-bg);
+}
+
 .dropdown-item {
+    color: var(--text-color);
     border-radius: 6px;
     padding: 0.6rem 1rem;
     font-weight: 500;
     transition: all 0.2s;
+}
+
+[data-theme="dark"] .dropdown-item {
+    color: var(--text-color);
 }
 
 .dropdown-item:hover {
@@ -267,8 +286,15 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 [dir="rtl"] .bi-arrow-right::before {
@@ -340,6 +366,17 @@ body {
     width: 100%;
 }
 
+body:not(.auth-page):not(.dashboard-page) {
+    padding-top: 80px;
+}
+
+@media (max-width: 991.98px) {
+    body:not(.auth-page):not(.dashboard-page) {
+        padding-top: 70px;
+    }
+}
+
+
 h1,
 h2,
 h3,
@@ -375,14 +412,16 @@ h6 {
     padding: 0.8rem 0;
 }
 
+.navbar.fixed-top,
 .navbar.sticky-top {
     backdrop-filter: blur(10px);
     background-color: rgba(var(--bg-color-rgb, 255, 255, 255), 0.8);
     border-bottom: 1px solid rgba(var(--border-color-rgb, 226, 232, 240), 0.5);
 }
 
-[data-bs-theme="dark"] .navbar.sticky-top {
-    background-color: rgba(15, 23, 42, 0.8);
+[data-theme="dark"] .navbar.fixed-top,
+[data-theme="dark"] .navbar.sticky-top {
+    background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
 .nav-link {
@@ -401,7 +440,8 @@ h6 {
     color: var(--secondary-color) !important;
 }
 
-.theme-toggle, .rtl-toggle {
+.theme-toggle,
+.rtl-toggle {
     border-radius: 50px !important;
     width: 38px;
     height: 38px;
@@ -427,7 +467,8 @@ h6 {
     letter-spacing: 0.5px;
 }
 
-.theme-toggle:hover, .rtl-toggle:hover {
+.theme-toggle:hover,
+.rtl-toggle:hover {
     background-color: var(--secondary-color) !important;
     color: white !important;
     border-color: var(--secondary-color) !important;
@@ -445,15 +486,29 @@ h6 {
     border-radius: 2px;
 }
 
-.btn-primary, 
-.btn-outline-primary {
+.btn-primary,
+.btn-outline-primary,
+.btn-light,
+.btn-secondary,
+.btn-outline-secondary {
     font-weight: 600;
     padding: 0.6rem 1.5rem;
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    filter: brightness(1.1);
 }
 
 .btn-primary {
@@ -578,12 +633,22 @@ h6 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
     color: var(--text-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .glass-card {
     background: rgba(30, 41, 59, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: var(--text-color);
+}
+
+[data-theme="dark"] .card {
+    border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Expertise Badges */
@@ -712,7 +777,8 @@ h6 {
 
 /* If the navbar is dark in light mode (e.g. over hero), we can force it */
 .navbar-toggler-icon {
-    filter: invert(1) brightness(2); /* Default to light for dark backgrounds */
+    filter: invert(1) brightness(2);
+    /* Default to light for dark backgrounds */
 }
 
 [data-theme="dark"] .navbar-toggler-icon {
@@ -750,28 +816,59 @@ h6 {
 }
 
 @media (max-width: 991.98px) {
+
     /* Center text and headings on tablet/mobile (Sections and Hero only) */
-    .section-padding, .hero-section {
+    .section-padding,
+    .hero-section {
         text-align: center !important;
     }
 
-    .section-padding h1, .section-padding h2, .section-padding h3, 
-    .section-padding h4, .section-padding h5, .section-padding h6, 
-    .section-padding p, .section-padding .lead,
-    .hero-section h1, .hero-section h2, .hero-section p, .hero-section .lead {
+    .section-padding h1,
+    .section-padding h2,
+    .section-padding h3,
+    .section-padding h4,
+    .section-padding h5,
+    .section-padding h6,
+    .section-padding p,
+    .section-padding .lead,
+    .hero-section h1,
+    .hero-section h2,
+    .hero-section p,
+    .hero-section .lead {
         text-align: center !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
     /* Stack buttons vertically whenever they are side by side */
-    .d-flex.gap-3, 
-    .d-flex.gap-2, 
+    .d-flex.gap-3,
+    .d-flex.gap-2,
     .d-flex.gap-4,
     .d-flex.justify-content-center {
         flex-direction: column !important;
         align-items: center !important;
         flex-wrap: wrap !important;
+    }
+
+    /* Exception for fixed toggles to keep them horizontal */
+    .position-fixed.z-3.d-flex {
+        flex-direction: row !important;
+    }
+
+    /* Fix for SDK tabs and other navs that should not stack vertically by default */
+    .nav-tabs,
+    .nav-pills,
+    .sdk-tabs {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-tabs .nav-item,
+    .sdk-tabs .nav-item {
+        flex: 0 0 auto !important;
     }
 
     /* Specifically ensure footer remains compact and left-aligned */
@@ -780,7 +877,9 @@ h6 {
         padding: 30px 0 15px 0 !important;
     }
 
-    .footer-padding h5, .footer-padding p, .footer-padding .text-muted {
+    .footer-padding h5,
+    .footer-padding p,
+    .footer-padding .text-muted {
         text-align: left !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -798,16 +897,18 @@ h6 {
     .footer-padding .newsletter-box {
         margin-top: 1.5rem;
     }
-    
+
     .footer-padding .col-6 {
         margin-bottom: 1rem;
     }
-    
+
     /* Exception for navbar and specific small layouts */
-    .navbar .d-flex, .admin-profile, .sidebar-footer .btn {
+    .navbar .d-flex,
+    .admin-profile,
+    .sidebar-footer .btn {
         flex-direction: row !important;
     }
-    
+
     .dashboard-sidebar .toggle-btn {
         flex-direction: row !important;
         justify-content: center !important;
@@ -827,7 +928,7 @@ h6 {
 
     /* Lists: center left alignment */
     /* Center the list block but keep bullet points aligned to the left */
-    .section-padding ul:not(.navbar-nav):not(.dropdown-menu), 
+    .section-padding ul:not(.navbar-nav):not(.dropdown-menu),
     .section-padding ol,
     .hero-section ul,
     .footer-padding ul:not(.navbar-nav) {
@@ -838,22 +939,57 @@ h6 {
         margin-right: auto !important;
     }
 
-    /* Reset for card contents to ensure they are centered */
-    .card-body, .card {
+    /* Reset for card contents to ensure they are centered only if intended */
+    .card:not(.glass-card) {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
     }
-    
-    .card-body p, .card-body h1, .card-body h2, .card-body h3, .card-body h4 {
+
+    .glass-card .card-body {
+        align-items: flex-start !important;
+    }
+
+    .card-body p,
+    .card-body h1,
+    .card-body h2,
+    .card-body h3,
+    .card-body h4 {
         text-align: center !important;
     }
 
     /* Keep code and terminal content left-aligned */
-    .terminal-window, .terminal-window *, pre, code, .param-table {
+    .terminal-window,
+    .terminal-window *,
+    pre,
+    code,
+    .param-table {
         text-align: left !important;
     }
-    
+
+    pre {
+        overflow-x: auto !important;
+        max-width: 100% !important;
+    }
+
+    .endpoint-url {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
+    }
+
+    /* Reduce internal hero padding on mobile */
+    .rounded-4.p-5 {
+        padding: 2rem 1.5rem !important;
+    }
+
+    /* Stack card headers on small screens */
+    .card-header .d-flex.justify-content-between {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+    }
+
     .terminal-window {
         align-items: flex-start !important;
     }
@@ -949,7 +1085,8 @@ h6 {
     transform: translateY(-5px);
 }
 
-#theme-toggle, #rtl-toggle {
+#theme-toggle,
+#rtl-toggle {
     cursor: pointer;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -964,7 +1101,8 @@ h6 {
     transition: all 0.2s;
 }
 
-#theme-toggle:hover, #rtl-toggle:hover {
+#theme-toggle:hover,
+#rtl-toggle:hover {
     background-color: var(--border-color);
     border-color: var(--secondary-color);
     color: var(--secondary-color);
@@ -1059,6 +1197,14 @@ h6 {
 
 .hero-section.bg-overlay::before {
     background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+
+.bg-overlay .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.bg-overlay .glass-card .text-muted {
+    color: inherit !important;
 }
 
 .testimonial-avatar {
@@ -1283,6 +1429,7 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
 }
+
 /* Dashboard Specific UI Utilities */
 .btn-action-fixed {
     min-width: 100px !important;

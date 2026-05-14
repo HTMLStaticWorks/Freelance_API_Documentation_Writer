@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -28,52 +31,67 @@
             flex-direction: column;
             transition: transform 0.3s ease;
         }
+
         [dir="rtl"] .dashboard-sidebar {
             left: auto !important;
             right: 0 !important;
             transform: none;
         }
+
         .dashboard-main {
             margin-left: 220px;
             padding: 2rem 3rem;
             transition: margin-left 0.3s ease;
         }
+
         [dir="rtl"] .dashboard-main {
             margin-left: 0 !important;
             margin-right: 220px !important;
         }
-        
+
         @media (max-width: 991.98px) {
             .dashboard-sidebar {
                 transform: translateX(-100%) !important;
             }
+
             [dir="rtl"] .dashboard-sidebar {
                 transform: translateX(100%) !important;
                 left: auto !important;
                 right: 0 !important;
             }
+
             .dashboard-sidebar.show {
                 transform: translateX(0) !important;
             }
+
             .dashboard-main {
                 margin-left: 0 !important;
                 padding: 4.5rem 1.5rem 1.5rem !important;
             }
+
             [dir="rtl"] .dashboard-main {
                 margin-right: 0 !important;
             }
         }
-        
+
         #dashboard-nav {
             flex: 1;
             overflow-y: auto;
             padding: 0 1rem;
         }
 
-        .progress { height: 8px; border-radius: 4px; }
-        .stat-card { border-radius: 12px; padding: 1.5rem; }
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+        }
+
+        .stat-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
         .sidebar-link {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -84,23 +102,29 @@
             cursor: pointer;
             font-size: 0.9rem;
         }
+
         .sidebar-link i {
             font-size: 1.1rem;
         }
-        .sidebar-link:hover, .sidebar-link.active {
-            background-color: rgba(255,255,255,0.1);
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
             color: white;
         }
+
         .sidebar-footer {
             margin-top: auto;
             padding: 1.5rem 1rem 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             background-color: var(--primary-color);
         }
+
         .navbar-brand.px-3 {
             padding-left: 1.5rem !important;
             padding-right: 1.5rem !important;
         }
+
         .admin-profile {
             display: flex;
             align-items: center;
@@ -108,6 +132,7 @@
             padding: 0.75rem 1rem;
             margin-bottom: 1rem;
         }
+
         .admin-avatar {
             width: 32px;
             height: 32px;
@@ -119,13 +144,15 @@
             font-weight: bold;
             font-size: 0.8rem;
         }
+
         .admin-name {
             font-size: 0.85rem;
             font-weight: 500;
         }
+
         .toggle-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             width: 100%;
             padding: 0.5rem;
@@ -138,30 +165,38 @@
             font-size: 0.85rem;
             transition: all 0.2s;
         }
+
         .toggle-btn:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
+
         .content-section {
             display: none;
         }
+
         .content-section.active {
             display: block;
         }
+
         .tracker-card {
             border-radius: 12px;
             padding: 1.25rem;
-            margin-bottom: 1rem;
+            width: 100%;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         .tracker-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
-<body class="bg-light-subtle">
+
+<body class="bg-light-subtle dashboard-page">
     <!-- Mobile Toggle Button -->
-    <button id="sidebar-toggle" class="btn btn-primary d-lg-none position-fixed top-0 start-0 m-3 z-3 rounded-circle shadow-lg" style="width: 50px; height: 50px;">
+    <button id="sidebar-toggle"
+        class="btn btn-primary d-lg-none position-fixed top-0 start-0 m-3 z-3 rounded-circle shadow-lg"
+        style="width: 50px; height: 50px;">
         <i class="bi bi-list fs-3"></i>
     </button>
 
@@ -172,10 +207,11 @@
         <a class="navbar-brand text-white mb-4 d-block px-3" href="index.html">
             <img src="assets/images/logo2.png" alt="Logo" class="brand-logo">
         </a>
-        
+
         <nav id="dashboard-nav">
             <a data-target="overview" class="sidebar-link active"><i class="bi bi-grid me-2"></i> Overview</a>
-            <a data-target="upload" class="sidebar-link"><i class="bi bi-file-earmark-arrow-up me-2"></i> Upload Spec</a>
+            <a data-target="upload" class="sidebar-link"><i class="bi bi-file-earmark-arrow-up me-2"></i> Upload
+                Spec</a>
             <a data-target="tracker" class="sidebar-link"><i class="bi bi-list-check me-2"></i> Tracker</a>
             <a data-target="comments" class="sidebar-link"><i class="bi bi-chat-left-text me-2"></i> Comments</a>
             <a data-target="history" class="sidebar-link"><i class="bi bi-clock-history me-2"></i> History</a>
@@ -183,27 +219,32 @@
         </nav>
 
         <div class="sidebar-footer">
-            <div class="d-flex gap-2 mb-3 px-2">
-                <button id="theme-toggle-sidebar" class="btn btn-sm btn-outline-light flex-grow-1 theme-toggle" aria-label="Toggle theme">
+            <div class="d-flex justify-content-center gap-3 mb-3 px-3">
+                <button id="theme-toggle-sidebar" class="btn btn-sm btn-outline-light theme-toggle"
+                    aria-label="Toggle theme">
                     <i class="bi bi-moon-stars-fill"></i>
                 </button>
-                <button id="rtl-toggle-sidebar" class="btn btn-sm btn-outline-light flex-grow-1 rtl-toggle btn-rtl-text" aria-label="Toggle RTL">
+                <button id="rtl-toggle-sidebar" class="btn btn-sm btn-outline-light rtl-toggle btn-rtl-text"
+                    aria-label="Toggle RTL">
                     RTL
                 </button>
             </div>
-            
+
             <div class="admin-profile">
                 <div class="admin-avatar text-white">JD</div>
                 <div class="admin-name">John Doe</div>
             </div>
-            <a href="index.html" class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center py-2 mt-2">
+            <a href="index.html"
+                class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center py-2 mt-2">
                 <i class="bi bi-box-arrow-right me-2"></i> Sign Out
             </a>
         </div>
     </aside>
 
     <main class="dashboard-main">
-        <header class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-5 text-center text-lg-start" data-aos="fade-down">
+        <header
+            class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 mb-5 text-center text-lg-start"
+            data-aos="fade-down">
             <div class="mb-2 mb-lg-0">
                 <h1 class="h3 fw-bold m-0" id="current-page-title">Project: Payment Engine v2</h1>
                 <p class="text-muted small m-0">Last updated 2 hours ago by Alex</p>
@@ -218,7 +259,7 @@
         <div id="overview" class="content-section active">
             <div class="row g-4 mb-5">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card stat-card border-0 shadow-sm glass-card h-100">
+                    <div class="card stat-card shadow-sm glass-card h-100">
                         <h6 class="text-muted small text-uppercase fw-bold mb-3">Completeness Score</h6>
                         <div class="d-flex align-items-end gap-2 mb-2">
                             <h2 class="m-0 fw-bold">84%</h2>
@@ -230,14 +271,14 @@
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card stat-card border-0 shadow-sm glass-card h-100">
+                    <div class="card stat-card shadow-sm glass-card h-100">
                         <h6 class="text-muted small text-uppercase fw-bold mb-3">Total Endpoints</h6>
                         <h2 class="m-0 fw-bold">42</h2>
                         <p class="text-muted small m-0 mt-2">35 Documented, 7 Pending</p>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card stat-card border-0 shadow-sm glass-card h-100">
+                    <div class="card stat-card shadow-sm glass-card h-100">
                         <h6 class="text-muted small text-uppercase fw-bold mb-3">SDK Status</h6>
                         <div class="d-flex gap-2 mt-2">
                             <span class="badge bg-success-subtle text-success border">Python</span>
@@ -250,17 +291,17 @@
 
             <div class="row g-4">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <div class="card border-0 shadow-sm p-4 glass-card">
+                    <div class="card shadow-sm p-4 glass-card h-100">
                         <h5 class="fw-bold mb-4">Quick Insights</h5>
-                        <div class="d-flex flex-column gap-3">
-                            <div class="tracker-card d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-column gap-3 w-100">
+                            <div class="tracker-card d-flex justify-content-between align-items-center w-100">
                                 <div>
                                     <h6 class="fw-bold mb-1">API Health</h6>
                                     <p class="text-muted small m-0">All systems operational across 4 regions.</p>
                                 </div>
                                 <span class="badge bg-success">Healthy</span>
                             </div>
-                            <div class="tracker-card d-flex justify-content-between align-items-center">
+                            <div class="tracker-card d-flex justify-content-between align-items-center w-100">
                                 <div>
                                     <h6 class="fw-bold mb-1">Documentation Coverage</h6>
                                     <p class="text-muted small m-0">7 new endpoints detected in last sync.</p>
@@ -271,7 +312,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="card border-0 shadow-sm p-4 glass-card" data-aos="fade-left" data-aos-delay="200">
+                    <div class="card shadow-sm p-4 glass-card h-100" data-aos="fade-left" data-aos-delay="200">
                         <h5 class="fw-bold mb-3">Recent Activity</h5>
                         <div class="small">
                             <div class="d-flex gap-3 mb-3">
@@ -296,11 +337,13 @@
 
         <!-- Upload Section -->
         <div id="upload" class="content-section">
-            <div class="card border-0 shadow-sm p-5 text-center glass-card">
-                <div class="border border-2 border-dashed rounded-4 p-5 text-center bg-light-subtle cursor-pointer" id="drop-zone">
+            <div class="card shadow-sm p-5 text-center glass-card">
+                <div class="border border-2 border-dashed rounded-4 p-5 text-center bg-light-subtle cursor-pointer"
+                    id="drop-zone">
                     <div class="mb-4"><i class="bi bi-cloud-upload display-1 text-primary"></i></div>
                     <h3 class="fw-bold">Upload New Specification</h3>
-                    <p class="text-muted mb-4">Drag and drop your OpenAPI YAML or JSON file here, or click to browse.</p>
+                    <p class="text-muted mb-4">Drag and drop your OpenAPI YAML or JSON file here, or click to browse.
+                    </p>
                     <button class="btn btn-primary btn-lg px-5">Select File</button>
                     <input type="file" class="d-none" id="dashboardSpecFile">
                 </div>
@@ -309,7 +352,7 @@
 
         <!-- Tracker Section (Replacing Table) -->
         <div id="tracker" class="content-section">
-            <div class="card border-0 shadow-sm p-4 glass-card">
+            <div class="card shadow-sm p-4 glass-card">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h5 class="fw-bold m-0">Documentation Tracker</h5>
                     <div class="input-group input-group-sm w-auto">
@@ -317,7 +360,7 @@
                         <input type="text" class="form-control border-start-0" placeholder="Filter endpoints...">
                     </div>
                 </div>
-                
+
                 <div class="row g-3">
                     <!-- Endpoint Card 1 -->
                     <div class="col-12">
@@ -400,7 +443,7 @@
 
         <!-- Comments Section -->
         <div id="comments" class="content-section">
-            <div class="card border-0 shadow-sm p-4 glass-card">
+            <div class="card shadow-sm p-4 glass-card">
                 <h5 class="fw-bold mb-4">Team Discussions</h5>
                 <div class="alert alert-info border-0 bg-info-subtle">
                     <i class="bi bi-info-circle me-2"></i> Select an endpoint in the Tracker to see specific comments.
@@ -410,16 +453,16 @@
 
         <!-- History Section -->
         <div id="history" class="content-section">
-            <div class="card border-0 shadow-sm p-4 glass-card">
+            <div class="card shadow-sm p-4 glass-card">
                 <h5 class="fw-bold mb-4">Revision History</h5>
                 <div class="list-group list-group-flush">
                     <div class="list-group-item bg-transparent border-0 px-0 mb-3">
                         <div class="d-flex justify-content-between">
-                            <h6 class="mb-1 fw-bold">v2.1.0 - Schema Update</h6>
+                            <h6 class="mb-1 fw-bold text-dark-emphasis">v2.1.0 - Schema Update</h6>
                             <small class="text-muted">Today, 2:45 PM</small>
                         </div>
-                        <p class="mb-1 small">Updated response types for /charges endpoint.</p>
-                        <small class="text-primary">Modified by Alex</small>
+                        <p class="mb-1 small text-dark-emphasis">Updated response types for /charges endpoint.</p>
+                        <small class="text-primary fw-bold">Modified by Alex</small>
                     </div>
                 </div>
             </div>
@@ -427,7 +470,7 @@
 
         <!-- Settings Section -->
         <div id="settings" class="content-section">
-            <div class="card border-0 shadow-sm p-4 glass-card">
+            <div class="card shadow-sm p-4 glass-card">
                 <h5 class="fw-bold mb-4">Project Settings</h5>
                 <form>
                     <div class="mb-3">
@@ -444,10 +487,10 @@
                     </div>
                     <button type="button" class="btn btn-primary">Save Changes</button>
                 </form>
-        </div>
-        
-        <!-- Footer -->
-        <footer class="mt-5 pt-5 border-top">
+            </div>
+
+            <!-- Footer -->
+            <!-- <footer class="mt-5 pt-5 border-top">
             <div class="row g-4">
                 <div class="col-md-12 col-lg-4">
                     <a class="navbar-brand d-block mb-3" href="index.html">
@@ -487,11 +530,12 @@
             <div class="mt-4 pt-4 border-top text-center text-muted smaller">
                 <p class="mb-0">&copy; 2026 APIForge. All rights reserved.</p>
             </div>
-        </footer>
+        </footer> -->
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>

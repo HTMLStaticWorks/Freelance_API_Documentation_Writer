@@ -159,15 +159,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Active Link Highlighting (Original for Main Nav)
+    // Active Link Highlighting (Main Nav & Dropdowns)
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // 1. Handle regular nav-links
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href');
-        if (linkPath === currentPath) {
+        const href = link.getAttribute('href');
+        if (href === currentPath) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
+        }
+    });
+
+    // 2. Handle dropdown items and parent toggles
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href === currentPath) {
+            item.classList.add('active');
+            // Find the parent dropdown toggle and make it active
+            const parentDropdown = item.closest('.dropdown');
+            if (parentDropdown) {
+                const toggle = parentDropdown.querySelector('.nav-link.dropdown-toggle');
+                if (toggle) toggle.classList.add('active');
+            }
+        } else {
+            item.classList.remove('active');
         }
     });
 
