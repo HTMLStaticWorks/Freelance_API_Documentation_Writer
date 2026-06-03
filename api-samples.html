@@ -132,7 +132,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="homeDropdown">
                             <li><a class="dropdown-item" href="index.html">Home 1 (Modern)</a></li>
-                            <li><a class="dropdown-item" href="index2.html">Home 2 (Enterprise)</a></li>
+                            <li><a class="dropdown-item" href="index2.html">Home 2 (Startups)</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -432,7 +432,58 @@ func main() {
                     </div>
                 </section>
 
-                <!-- Section 4: Authentication Flow -->
+                <!-- Section 4: Error Code Library -->
+                <section id="error-codes" class="pb-5 mb-5 border-bottom">
+                    <div class="text-center mb-4" data-aos="fade-up">
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <div class="p-3 rounded-3 bg-primary-subtle me-3">
+                                <i class="bi bi-exclamation-triangle fs-3 text-primary"></i>
+                            </div>
+                            <h2 class="fw-bold m-0">Error Code Library</h2>
+                        </div>
+                        <p class="text-muted m-0">Structured references for all possible error codes to help developers debug faster.</p>
+                    </div>
+
+                    <div class="card border-0 shadow-sm overflow-hidden glass-card" data-aos="fade-up">
+                        <div class="card-body p-4">
+                            <div class="table-responsive">
+                                <table class="table param-table align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>HTTP Status</th>
+                                            <th>Error Code</th>
+                                            <th>Description & Resolution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="badge bg-danger-subtle text-danger">400 Bad Request</span></td>
+                                            <td><code class="text-primary">invalid_request_error</code></td>
+                                            <td><p class="text-muted small m-0">The request was unacceptable, often due to missing a required parameter. Check the <code>message</code> field for details.</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-warning-subtle text-warning">401 Unauthorized</span></td>
+                                            <td><code class="text-primary">authentication_error</code></td>
+                                            <td><p class="text-muted small m-0">No valid API key provided. Ensure your <code>Authorization</code> header is set correctly with a valid token.</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-info-subtle text-info">403 Forbidden</span></td>
+                                            <td><code class="text-primary">permission_denied</code></td>
+                                            <td><p class="text-muted small m-0">The API key doesn't have the required permissions to perform this action. Check your key's scope in the dashboard.</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-secondary-subtle text-secondary">429 Too Many Requests</span></td>
+                                            <td><code class="text-primary">rate_limit_exceeded</code></td>
+                                            <td><p class="text-muted small m-0">Too many requests hit the API too quickly. Wait and retry using exponential backoff.</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Authentication Flow -->
                 <section id="auth-flow" class="pb-5 mb-5">
                     <div class="text-center mb-4" data-aos="fade-up">
                         <div class="d-flex align-items-center justify-content-center mb-3">
