@@ -665,6 +665,11 @@ h6 {
     border-color: var(--secondary-color) !important;
 }
 
+.expertise-badge:hover i,
+.expertise-badge:hover .text-primary {
+    color: white !important;
+}
+
 /* Testimonial Cards */
 .testimonial-card {
     transition: all 0.3s ease;
@@ -1011,11 +1016,7 @@ h6 {
     background-size: cover;
     background-position: center;
     position: relative;
-    color: #f8fafc;
-}
-
-.footer-padding .text-muted {
-    color: #cbd5e1 !important;
+    color: var(--text-color);
 }
 
 .footer-padding a.text-muted:hover {
@@ -1028,7 +1029,7 @@ h6 {
 .footer-padding h4,
 .footer-padding h5,
 .footer-padding h6 {
-    color: #ffffff;
+    color: var(--text-color);
 }
 
 .footer-padding::before {
@@ -1038,40 +1039,22 @@ h6 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 23, 42, 0.95);
-    /* Heavy overlay to keep it subtle */
+    background: var(--bg-color);
+    opacity: 0.95;
     z-index: 0;
 }
 
-.footer-padding>.container {
+.footer-padding > .container {
     position: relative;
     z-index: 1;
 }
 
 .newsletter-box {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.newsletter-box h5 {
-    color: #ffffff !important;
-}
-
-.newsletter-box .text-muted {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.newsletter-box .form-control {
-    background-color: rgba(0, 0, 0, 0.2) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
-}
-
-.newsletter-box .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid var(--border-color);
 }
 
 .card {
@@ -1447,4 +1430,41 @@ a:hover {
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+/* Meet your technical writer social icons */
+.writer-social-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.writer-social-icon:hover {
+    background-color: var(--card-bg);
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 991.98px) {
+    .section-padding a.btn.writer-social-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+        display: inline-flex !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+    }
+    div.d-flex.writer-social-wrapper {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
 }
